@@ -1,0 +1,56 @@
+.fullPageScroll{
+    margin:-8px;
+    // In most major browsers, the default margin is 8px on all sides. It is defined in pixels by the user-agent-stylesheet your browser provides
+    position: relative;
+    scroll-snap-type: mandatory y;
+    width:100vw;
+    height: 100vh;
+    scroll-behavior: smooth;
+    .section{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-blend-mode: multiply;
+        scroll-snap-align: start;
+        &:nth-child(1){
+            background: rgb(243, 137, 50);
+            background-image: url('../../../photos/_gate.jpg') ;
+            // background-repeat: no-repeat;
+            // background-position: center;
+        }
+        &:nth-child(2){
+            background: rgb(255, 119, 119) url('../../../photos/bg2.png');
+            // background-position: center;
+        }
+        &:nth-child(3){
+            background: rgb(85, 64, 46) url('../../../photos/bg2.png') ;
+            
+        }
+        &:nth-child(4){
+            background: rgb(21, 34, 39) url('../../../photos/bg2.png');
+            
+        }
+        &:nth-child(n){
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        
+        .content{
+            position: absolute;
+            bottom:50px;
+            left:50px;
+            color:black;
+            width:50vw;
+            height:25vh;
+            padding:20px;
+            background-color: rgba(255, 255, 255, 0.575);
+            font-family: Arial, Helvetica, sans-serif;
+            h2{
+                font-size: 1.5rem;
+            }
+            p{
+                font-size: 1rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cusFullPageScroll.css">
+</head>
+<body>
+    <script type="module">
+        import fullPageScroll from './fullPageScroll.js';
+        import {useComponent} from '../../js/useComponent/useComponent.js'
+        useComponent('cus-full-page-scroll','./fullPageScroll.htm', fullPageScroll)
+        .then((newEle) => {
+            // let newEle = new compObj.ctor(compObj.templateContent);
+            document.body.appendChild(newEle);
+            console.log(newEle);
+            // newEle.scrollToEle('#qanda');
+        }
+        ).catch((e) => {
+            console.log(e);
+        }
+        );
+    </script>
+</body>
+</html>

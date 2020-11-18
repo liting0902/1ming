@@ -1,0 +1,49 @@
+.fullPageScroll {
+  margin: -8px;
+  position: relative;
+  scroll-snap-type: mandatory y;
+  width: 100vw;
+  height: 100vh;
+  scroll-behavior: smooth;
+}
+.fullPageScroll .section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-blend-mode: multiply;
+  scroll-snap-align: start;
+}
+.fullPageScroll .section:nth-child(1) {
+  background: #f38932;
+  background-image: url("../../../photos/_gate.jpg");
+}
+.fullPageScroll .section:nth-child(2) {
+  background: #ff7777 url("../../../photos/bg2.png");
+}
+.fullPageScroll .section:nth-child(3) {
+  background: #55402e url("../../../photos/bg2.png");
+}
+.fullPageScroll .section:nth-child(4) {
+  background: #152227 url("../../../photos/bg2.png");
+}
+.fullPageScroll .section:nth-child(n) {
+  background-size: cover;
+  background-attachment: fixed;
+}
+.fullPageScroll .section .content {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  color: black;
+  width: 50vw;
+  height: 25vh;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.575);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.fullPageScroll .section .content h2 {
+  font-size: 1.5rem;
+}
+.fullPageScroll .section .content p {
+  font-size: 1rem;
+}
