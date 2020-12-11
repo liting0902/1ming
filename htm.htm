@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div::before {
+            content: "我是 before  ";
+            color: rgb(1, 26, 248);
+        }
+
+        div::after {
+            content: "  我是 after  ";
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>xxxxxxxxxxxxxxxxxxxx</div>
+    <input type="text" textlValue placeholder="textlValue">
+    <script>
+        let text = textlValue;
+        let div1 = document.createElement('div');
+        document.body.appendChild(div1);
+        div1.innerText = text;
+    </script>
+</body>
+
+</html>

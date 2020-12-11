@@ -1,0 +1,12 @@
+.aBox{
+    box-sizing: border-box;
+    border: blueviolet 10px solid;
+    width:500px;
+    height: 30px;
+}
+.bordercont{
+    box-sizing: content-box;
+    border: greenyellow 10px solid;
+    width:500px;
+    height: 30px;
+}

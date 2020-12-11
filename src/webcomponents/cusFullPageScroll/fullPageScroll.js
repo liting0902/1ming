@@ -1,11 +1,11 @@
 export default class extends HTMLElement{
     constructor(templateContent){
-        super(templateContent);
+        super();
         if(!templateContent)
         throw new Error('Argument dose not exist.');
         this.appendChild(templateContent);
     }
-    c(targetEle){
+    scrollToEle(targetEle){
         let ele = this.querySelector(targetEle);
         ele.scrollIntoView();
     }

@@ -14,17 +14,17 @@
   scroll-snap-align: start;
 }
 .fullPageScroll .section:nth-child(1) {
-  background: #f38932;
-  background-image: url("../../../photos/_gate.jpg");
+  background-image: url("../../../photos/spices.jpg");
 }
 .fullPageScroll .section:nth-child(2) {
-  background: #ff7777 url("../../../photos/bg2.png");
+  background: #949494 url("../../../photos/99012.jpg");
+  background-position: top;
 }
 .fullPageScroll .section:nth-child(3) {
-  background: #55402e url("../../../photos/bg2.png");
+  background: #424242 url("../../../photos/kitware.jpg");
 }
 .fullPageScroll .section:nth-child(4) {
-  background: #152227 url("../../../photos/bg2.png");
+  background: #413e3e url("../../../photos/_old_street.jpg");
 }
 .fullPageScroll .section:nth-child(n) {
   background-size: cover;
@@ -46,4 +46,8 @@
 }
 .fullPageScroll .section .content p {
   font-size: 1rem;
+  width: 50%;
+}
+.fullPageScroll .section .content a {
+  display: inline-block;
 }

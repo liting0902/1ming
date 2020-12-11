@@ -13,24 +13,24 @@
         background-blend-mode: multiply;
         scroll-snap-align: start;
         &:nth-child(1){
-            background: rgb(243, 137, 50);
-            background-image: url('../../../photos/_gate.jpg') ;
+            background-image: url('../../../photos/spices.jpg') ;
             // background-repeat: no-repeat;
             // background-position: center;
         }
         &:nth-child(2){
-            background: rgb(255, 119, 119) url('../../../photos/bg2.png');
-            // background-position: center;
+            background: rgb(148, 148, 148)  url('../../../photos/99012.jpg');
+            background-position: top;
         }
         &:nth-child(3){
-            background: rgb(85, 64, 46) url('../../../photos/bg2.png') ;
+            background: rgb(66, 66, 66)   url('../../../photos/kitware.jpg') ;
             
         }
         &:nth-child(4){
-            background: rgb(21, 34, 39) url('../../../photos/bg2.png');
+            background:rgb(65, 62, 62)  url("../../../photos/_old_street.jpg");
             
         }
         &:nth-child(n){
+            //全部設定
             background-size: cover;
             background-attachment: fixed;
         }
@@ -45,11 +45,18 @@
             padding:20px;
             background-color: rgba(255, 255, 255, 0.575);
             font-family: Arial, Helvetica, sans-serif;
+            
             h2{
+                
                 font-size: 1.5rem;
+                
             }
             p{
                 font-size: 1rem;
+                width:50%;
+            }
+            a{
+                display: inline-block;
             }
         }
     }
