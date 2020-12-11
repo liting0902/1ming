@@ -1,0 +1,5 @@
+@use './buttonGlory.scss';
+
+button{
+    @include buttonGlory.getSigninButton(red, 25%)
+}
