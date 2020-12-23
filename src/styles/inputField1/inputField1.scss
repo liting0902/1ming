@@ -1,0 +1,98 @@
+$iptFontSize:1rem;
+$spanFontSize:12px;
+$iptSpanGap:7px;
+
+.inputField {
+    padding: .3rem;
+    // border:deeppink 1px solid;
+
+    span {
+        font-size: $spanFontSize;
+        text-transform: uppercase;
+        //opacity: 1;
+        //display: inline;
+        vertical-align: middle;
+        position: relative;
+        //transition: all 5s linear;
+        transform: rotate(160deg);
+        margin-left: 20px;
+        -webkit-transform: rotate(160deg);
+        -moz-transform: rotate(160deg);
+        -ms-transform: rotate(160deg);
+        -o-transform: rotate(160deg);
+    }
+
+    input {
+        // display: inline;
+        font-size: $iptFontSize;
+        font-weight: bold;
+        color: white;
+        border: none;
+        padding: 10px;
+        height: 15px;
+        background-color: rgba(255, 255, 255, 0.575);
+        border: 2px solid rgba(255, 255, 255, 0);
+        overflow: hidden;
+        border-radius: 20px;
+        letter-spacing: 5px;
+
+        &:focus {
+            outline: none;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.23);
+            transition: 3s;
+            //color: #fff;
+            // animation: iptFocus 3s 1;
+            // animation-fill-mode: forwards;
+
+        }
+
+        // &:placeholder-shown{
+        //     animation: iptFocus 5s 1;
+        // }
+
+        // &:focus+span {
+        //     opacity: 0.6;
+        // }
+
+    }
+}
+
+@mixin inputCheckValid($iconSize, $fontColor, $rightOffsetPercent) {
+    width: 300px;
+
+    &+span {
+        position: relative;
+        &::before {
+            position: absolute;
+            font-family: "Font Awesome 5 Free";
+            font-size: $iconSize;
+            content: "\f058";
+            color: $fontColor;
+            right: #{$iconSize%-$rightOffsetPercent};
+        }
+    }
+    
+    &:invalid+span{
+        &::before{
+            display: none;
+        }
+    }
+
+}
+
+@keyframes iptFocus {
+    from {
+        background-color: rgba(255, 255, 255, 0.575);
+    }
+
+    to {
+        background-color: rgba(255, 255, 255, 0.175);
+    }
+}
+
+
+.inputCheckValid {
+    @include inputCheckValid(1rem, deeppink, 0.5)
+}

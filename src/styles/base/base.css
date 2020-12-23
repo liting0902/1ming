@@ -64,7 +64,7 @@ img {
   -o-border-radius: 20px;
 }
 .b-btnGolden:hover {
-  color: white;
+  color: #fcfbef;
   background-color: #beac74;
   transition-duration: 0.3s;
   border-radius: 20px;

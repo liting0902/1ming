@@ -1,0 +1,268 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #06101b;
+  color: white;
+}
+
+.b-displayNone {
+  display: none;
+}
+
+.b-textCenter {
+  text-align: center;
+}
+
+.b-flexStart {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.b-flexCenter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.b-ulStyleNone {
+  list-style-type: none;
+}
+
+.b-imgContainer {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.b-btnGolden {
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+  color: #beac74;
+  border: #beac74 2px solid;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.b-btnGolden:hover {
+  color: #fcfbef;
+  background-color: #beac74;
+  transition-duration: 0.3s;
+  border-radius: 20px;
+}
+.b-btnGolden:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.bd1 {
+  border: red 2px solid;
+}
+
+.bd2 {
+  border: #f8f407 2px solid;
+}
+
+.bd3 {
+  border: #076ff8 2px solid;
+}
+
+.bd4 {
+  border: #07f877 2px solid;
+}
+
+.inputField {
+  padding: 0.3rem;
+}
+.inputField span {
+  font-size: 12px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  position: relative;
+  transform: rotate(160deg);
+  margin-left: 20px;
+  -webkit-transform: rotate(160deg);
+  -moz-transform: rotate(160deg);
+  -ms-transform: rotate(160deg);
+  -o-transform: rotate(160deg);
+}
+.inputField input {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  padding: 10px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.575);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  border-radius: 20px;
+  letter-spacing: 5px;
+}
+.inputField input:focus {
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.23);
+  transition: 3s;
+}
+
+@keyframes iptFocus {
+  from {
+    background-color: rgba(255, 255, 255, 0.575);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0.175);
+  }
+}
+.inputCheckValid {
+  width: 300px;
+}
+.inputCheckValid + span {
+  position: relative;
+}
+.inputCheckValid + span::before {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1rem;
+  content: "";
+  color: deeppink;
+  right: 0rem;
+}
+.inputCheckValid:invalid + span::before {
+  display: none;
+}
+
+.backArrow, .divSignupHtm, .divForgetPassword {
+  cursor: pointer;
+}
+
+.modalLogin .modal-content {
+  background-color: #19416e;
+  font-size: 15px;
+  height: 600px;
+  width: 500px;
+  border: deeppink 1px solid;
+}
+.modalLogin .modal-content .modal-header .titleText {
+  color: #fcfbef;
+}
+.modalLogin .modal-content .modal-header .radioLogin:checked ~ .backArrow, .modalLogin .modal-content .modal-header .radioLogin:checked ~ .labelSignup, .modalLogin .modal-content .modal-header .radioLogin:checked ~ .labelPwdReset {
+  display: none;
+}
+.modalLogin .modal-content .modal-header .radioSignup:checked ~ .labelLogin, .modalLogin .modal-content .modal-header .radioSignup:checked ~ .labelPwdReset {
+  display: none;
+}
+.modalLogin .modal-content .modal-header .radioPwdReset:checked ~ .labelSignup, .modalLogin .modal-content .modal-header .radioPwdReset:checked ~ .labelLogin {
+  display: none;
+}
+.modalLogin .modal-content .modal-body {
+  border: #d4ff14 1px solid;
+  position: relative;
+}
+.modalLogin .modal-content .modal-body [name=sign] {
+  display: none;
+}
+.modalLogin .modal-content .modal-body .loginForm,
+.modalLogin .modal-content .modal-body .signupForm,
+.modalLogin .modal-content .modal-body .pwdResetForm {
+  position: absolute;
+  height: 90%;
+  width: 80%;
+  border-radius: 10px;
+  padding: 80px 50px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  transition: all 1s;
+  line-height: 30px;
+}
+.modalLogin .modal-content .modal-body .ckboxLogin:checked ~ .loginForm {
+  transform: rotateY(0deg);
+}
+.modalLogin .modal-content .modal-body .ckboxSignup:checked ~ .signupForm {
+  transform: rotateY(0deg);
+}
+.modalLogin .modal-content .modal-body .ckboxPwdReset:checked ~ .pwdResetForm {
+  transform: rotateY(0deg);
+}
+.modalLogin .modal-content .modal-body .ckboxKeepSignin {
+  padding: 10px;
+}
+.modalLogin .modal-content .modal-body .ckboxKeepSignin input {
+  margin: 10px;
+}
+.modalLogin .modal-content .modal-body .divSignupHtm, .modalLogin .modal-content .modal-body .divForgetPassword {
+  display: block;
+}
+.modalLogin .modal-content .modal-body .btnEmailSignin {
+  background-color: #498dd7;
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #FFF;
+  padding: 5px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  margin: 1.3rem;
+}
+.modalLogin .modal-content .modal-body .btnEmailSignin:hover {
+  background: #73a7e0;
+  box-shadow: 0px 4px 35px -5px #73a7e0;
+  cursor: pointer;
+}
+.modalLogin .modal-content .modal-body .btnEmailSigninfocus {
+  outline: none;
+}
+.modalLogin .modal-content .modal-body .btnGoogleSignin {
+  background-color: #f74144;
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #FFF;
+  padding: 5px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  margin: 1.3rem;
+}
+.modalLogin .modal-content .modal-body .btnGoogleSignin:hover {
+  background: #f97274;
+  box-shadow: 0px 4px 35px -5px #f97274;
+  cursor: pointer;
+}
+.modalLogin .modal-content .modal-body .btnGoogleSigninfocus {
+  outline: none;
+}

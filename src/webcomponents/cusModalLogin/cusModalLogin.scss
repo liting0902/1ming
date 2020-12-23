@@ -1,0 +1,119 @@
+@use '../../styles/base/base.scss';
+@use '../../styles/inputField1/inputField1.scss';
+@use '../../styles/buttonGlory/buttonGlory.scss';
+
+
+$colorRoyalBlue:base.$colorRoyalBlue;
+$colorWhite:base.$colorWhite;
+$colorGold:base.$colorGold;
+$colorGoogleRed:base.$colorGoogleRed;
+$fieldWidth:90%;
+$modalBackground:lighten($colorRoyalBlue, 20%);
+
+.backArrow, .divSignupHtm, .divForgetPassword{
+    cursor: pointer;
+}
+.modalLogin{
+    
+    .modal-content{
+        background-color: $modalBackground;
+        font-size: 15px;
+        height:600px;
+        width:500px;
+        border: deeppink 1px solid;
+
+        .modal-header{
+            .titleText{
+                color:$colorWhite;
+            }
+        //    input[name=headerSign]{
+        //        display: none;
+        //    }
+        //   只控制顯示header 不控制翻頁
+        & .radioLogin:checked {
+            &~.backArrow,
+            &~.labelSignup,
+            &~.labelPwdReset {
+                display: none ;
+            }
+        }
+        & .radioSignup:checked {
+            &~ .labelLogin,
+            &~ .labelPwdReset {
+                display: none ;
+            }
+        }
+        & .radioPwdReset:checked {
+            &~ .labelSignup,
+            &~ .labelLogin {
+                display: none ;
+            }
+        }
+
+        }
+        .modal-body {
+            border: rgb(212, 255, 20) 1px solid;
+            [name=sign]{display: none;}
+
+            position: relative;
+        
+            // three forms: loginForm, signupForm, pwdResetForm
+            & .loginForm,
+            .signupForm,
+            .pwdResetForm {
+                position: absolute;
+                height: 90%;
+                width: 80%;
+                border-radius: 10px;
+                padding: 80px 50px;
+                // background-color: rgba(10, 27, 41);
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                transform: rotateY(180deg);
+                backface-visibility: hidden;
+                transition: all 1s;
+                line-height: 30px;
+            }
+            //利用label 控制翻頁
+            // default 
+            .ckboxLogin:checked~.loginForm {
+                transform: rotateY(0deg);
+            }
+            //For sign up
+            .ckboxSignup:checked~.signupForm {
+                transform: rotateY(0deg);
+            }
+            // for PWD reset
+            .ckboxPwdReset:checked~.pwdResetForm {
+                transform: rotateY(0deg);
+            }
+        
+        .ckboxKeepSignin{
+            padding: 10px;
+
+            & input {
+                margin: 10px;
+            }
+        }
+        .divSignupHtm, .divForgetPassword{
+            display: block;
+        }
+        .btnEmailSignin{
+            $blueColor:lighten($colorRoyalBlue,50%);
+            @include buttonGlory.getSigninButton($blueColor,$fieldWidth);
+            margin: 1.3rem;
+        }
+        .btnGoogleSignin{
+            @include buttonGlory.getSigninButton($colorGoogleRed, $fieldWidth);
+            margin: 1.3rem;
+        }
+        }
+
+
+    }
+    
+
+}
+

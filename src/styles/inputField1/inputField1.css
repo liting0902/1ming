@@ -1,1 +1,62 @@
+@charset "UTF-8";
+.inputField {
+  padding: 0.3rem;
+}
+.inputField span {
+  font-size: 12px;
+  text-transform: uppercase;
+  vertical-align: middle;
+  position: relative;
+  transform: rotate(160deg);
+  margin-left: 20px;
+  -webkit-transform: rotate(160deg);
+  -moz-transform: rotate(160deg);
+  -ms-transform: rotate(160deg);
+  -o-transform: rotate(160deg);
+}
+.inputField input {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  border: none;
+  padding: 10px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.575);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  border-radius: 20px;
+  letter-spacing: 5px;
+}
+.inputField input:focus {
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.23);
+  transition: 3s;
+}
 
+@keyframes iptFocus {
+  from {
+    background-color: rgba(255, 255, 255, 0.575);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0.175);
+  }
+}
+.inputCheckValid {
+  width: 300px;
+}
+.inputCheckValid + span {
+  position: relative;
+}
+.inputCheckValid + span::before {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1rem;
+  content: "";
+  color: deeppink;
+  right: 0rem;
+}
+.inputCheckValid:invalid + span::before {
+  display: none;
+}
