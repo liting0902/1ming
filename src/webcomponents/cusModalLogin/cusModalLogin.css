@@ -1,4 +1,69 @@
 @charset "UTF-8";
+.inputField1 {
+  margin-left: 0.7rem;
+  padding: 0.4rem;
+}
+.inputField1 span {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.418);
+  vertical-align: middle;
+  position: relative;
+  transform: rotate(160deg);
+  margin-left: 1.3rem;
+  -webkit-transform: rotate(160deg);
+  -moz-transform: rotate(160deg);
+  -ms-transform: rotate(160deg);
+  -o-transform: rotate(160deg);
+}
+.inputField1 input {
+  font-size: 1rem;
+  color: white;
+  border: none;
+  padding: 10px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.212);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  border-radius: 20px;
+  letter-spacing: 0.15rem;
+}
+.inputField1 input:focus {
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.23);
+  transition: 3s;
+}
+
+@keyframes iptFocus {
+  from {
+    background-color: rgba(255, 255, 255, 0.575);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0.175);
+  }
+}
+.inputCheckValid {
+  width: 90%;
+  height: 39px;
+}
+.inputCheckValid + span {
+  position: relative;
+}
+.inputCheckValid + span::before {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1rem;
+  font-weight: bold;
+  content: "";
+  color: deeppink;
+  right: 0rem;
+}
+.inputCheckValid:invalid + span::before {
+  display: none;
+}
+
 *,
 *::before,
 *::after {
@@ -6,7 +71,7 @@
 }
 
 html, body {
-  background-color: #06101b;
+  background-color: #020c16;
   color: white;
 }
 
@@ -65,7 +130,7 @@ img {
   -o-border-radius: 20px;
 }
 .b-btnGolden:hover {
-  color: #fcfbef;
+  color: #bbbbba;
   background-color: #beac74;
   transition-duration: 0.3s;
   border-radius: 20px;
@@ -75,194 +140,216 @@ img {
   box-shadow: none;
 }
 
-.bd1 {
-  border: red 2px solid;
-}
 
-.bd2 {
-  border: #f8f407 2px solid;
-}
 
-.bd3 {
-  border: #076ff8 2px solid;
-}
-
-.bd4 {
-  border: #07f877 2px solid;
-}
-
-.inputField {
-  padding: 0.3rem;
-}
-.inputField span {
-  font-size: 12px;
-  text-transform: uppercase;
-  vertical-align: middle;
-  position: relative;
-  transform: rotate(160deg);
-  margin-left: 20px;
-  -webkit-transform: rotate(160deg);
-  -moz-transform: rotate(160deg);
-  -ms-transform: rotate(160deg);
-  -o-transform: rotate(160deg);
-}
-.inputField input {
-  font-size: 1rem;
-  font-weight: bold;
+.btnClose {
   color: white;
-  border: none;
-  padding: 10px;
-  height: 15px;
-  background-color: rgba(255, 255, 255, 0.575);
-  border: 2px solid rgba(255, 255, 255, 0);
-  overflow: hidden;
-  border-radius: 20px;
-  letter-spacing: 5px;
+  font-size: 1.5rem;
 }
-.inputField input:focus {
-  outline: none;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.23);
-  transition: 3s;
+.btnClose:hover {
+  color: #fafa97;
 }
 
-@keyframes iptFocus {
-  from {
-    background-color: rgba(255, 255, 255, 0.575);
-  }
-  to {
-    background-color: rgba(255, 255, 255, 0.175);
-  }
+.pointer {
+  cursor: pointer;
 }
-.inputCheckValid {
-  width: 300px;
+
+.modal-dialog {
+  width: 92%;
+  background-color: #04192d;
 }
-.inputCheckValid + span {
+
+.modal-content {
+  letter-spacing: 0.1rem;
+  background-color: #04192d;
+  padding: 1rem;
+}
+.modal-content input[type=radio] {
+  display: none;
+}
+.modal-contentspan {
+  font-size: 1rem;
+}
+.modal-content .modal-header h5 {
+  margin-left: 1rem;
+  font-weight: bold;
+}
+.modal-content .modal-header .headerLogin,
+.modal-content .modal-header .headerSignup,
+.modal-content .modal-header .headerPwdReset {
+  display: none;
+}
+.modal-content .modal-header .userIcon, .modal-content .modal-header .returnArrow {
+  font-size: 1.25rem;
+}
+.modal-content .modal-header .radioLogin:checked ~ .userIcon,
+.modal-content .modal-header .radioLogin:checked ~ .headerLogin {
+  display: block;
+}
+.modal-content .modal-header .radioLogin:checked ~ .returnArrow {
+  display: none;
+}
+.modal-content .modal-header .radioSignup:checked ~ .userIcon {
+  display: none;
+}
+.modal-content .modal-header .radioSignup:checked ~ .headerSignup {
+  display: block;
+}
+.modal-content .modal-header .radioPwdReset:checked ~ .userIcon {
+  display: none;
+}
+.modal-content .modal-header .radioPwdReset:checked ~ .headerPwdReset {
+  display: block;
+}
+.modal-content .modal-body {
+  height: 500px;
   position: relative;
 }
-.inputCheckValid + span::before {
+.modal-content .modal-body .formLogin,
+.modal-content .modal-body .formSignup,
+.modal-content .modal-body .formPwdReset {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  transition: 1s;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
+}
+.modal-content .modal-body .flipToLogin:checked ~ .formLogin {
+  transform: rotate(0);
+  -webkit-transform: rotate(0);
+  -moz-transform: rotate(0);
+  -ms-transform: rotate(0);
+  -o-transform: rotate(0);
+}
+.modal-content .modal-body .flipToSignup:checked ~ .formSignup {
+  transform: rotate(0);
+}
+.modal-content .modal-body .flipToPwdReset:checked ~ .formPwdReset {
+  transform: rotate(0);
+}
+.modal-content input[required] {
+  width: 90%;
+  height: 39px;
+}
+.modal-content input[required] + span {
+  position: relative;
+}
+.modal-content input[required] + span::before {
   position: absolute;
   font-family: "Font Awesome 5 Free";
   font-size: 1rem;
+  font-weight: bold;
   content: "";
-  color: deeppink;
+  color: #01a301;
   right: 0rem;
 }
-.inputCheckValid:invalid + span::before {
+.modal-content input[required]:invalid + span::before {
   display: none;
 }
-
-.backArrow, .divSignupHtm, .divForgetPassword {
-  cursor: pointer;
-}
-
-.modalLogin .modal-content {
-  background-color: #19416e;
-  font-size: 15px;
-  height: 600px;
-  width: 500px;
-  border: deeppink 1px solid;
-}
-.modalLogin .modal-content .modal-header .titleText {
-  color: #fcfbef;
-}
-.modalLogin .modal-content .modal-header .radioLogin:checked ~ .backArrow, .modalLogin .modal-content .modal-header .radioLogin:checked ~ .labelSignup, .modalLogin .modal-content .modal-header .radioLogin:checked ~ .labelPwdReset {
-  display: none;
-}
-.modalLogin .modal-content .modal-header .radioSignup:checked ~ .labelLogin, .modalLogin .modal-content .modal-header .radioSignup:checked ~ .labelPwdReset {
-  display: none;
-}
-.modalLogin .modal-content .modal-header .radioPwdReset:checked ~ .labelSignup, .modalLogin .modal-content .modal-header .radioPwdReset:checked ~ .labelLogin {
-  display: none;
-}
-.modalLogin .modal-content .modal-body {
-  border: #d4ff14 1px solid;
-  position: relative;
-}
-.modalLogin .modal-content .modal-body [name=sign] {
-  display: none;
-}
-.modalLogin .modal-content .modal-body .loginForm,
-.modalLogin .modal-content .modal-body .signupForm,
-.modalLogin .modal-content .modal-body .pwdResetForm {
-  position: absolute;
-  height: 90%;
-  width: 80%;
-  border-radius: 10px;
-  padding: 80px 50px;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-  transition: all 1s;
-  line-height: 30px;
-}
-.modalLogin .modal-content .modal-body .ckboxLogin:checked ~ .loginForm {
-  transform: rotateY(0deg);
-}
-.modalLogin .modal-content .modal-body .ckboxSignup:checked ~ .signupForm {
-  transform: rotateY(0deg);
-}
-.modalLogin .modal-content .modal-body .ckboxPwdReset:checked ~ .pwdResetForm {
-  transform: rotateY(0deg);
-}
-.modalLogin .modal-content .modal-body .ckboxKeepSignin {
-  padding: 10px;
-}
-.modalLogin .modal-content .modal-body .ckboxKeepSignin input {
-  margin: 10px;
-}
-.modalLogin .modal-content .modal-body .divSignupHtm, .modalLogin .modal-content .modal-body .divForgetPassword {
-  display: block;
-}
-.modalLogin .modal-content .modal-body .btnEmailSignin {
-  background-color: #498dd7;
+.modal-content .btnLoginEmail {
+  background-color: #062645;
   width: 90%;
   font-family: "Montserrat", sans-serif;
-  font-size: 15px;
+  font-size: 0.8rem;
   letter-spacing: 1px;
   color: #FFF;
   padding: 5px 20px;
+  margin: 1rem;
   display: block;
   height: 39px;
   border-radius: 20px;
   border: none;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
-  margin: 1.3rem;
 }
-.modalLogin .modal-content .modal-body .btnEmailSignin:hover {
-  background: #73a7e0;
-  box-shadow: 0px 4px 35px -5px #73a7e0;
+.modal-content .btnLoginEmail:hover {
+  background: #0b3f74;
+  box-shadow: 0px 4px 35px -5px #0b3f74;
   cursor: pointer;
 }
-.modalLogin .modal-content .modal-body .btnEmailSigninfocus {
+.modal-content .btnLoginEmail:focus {
   outline: none;
 }
-.modalLogin .modal-content .modal-body .btnGoogleSignin {
-  background-color: #f74144;
+.modal-content .btnLoginGoogle {
+  background-color: #7a0042;
   width: 90%;
   font-family: "Montserrat", sans-serif;
-  font-size: 15px;
+  font-size: 0.8rem;
   letter-spacing: 1px;
   color: #FFF;
   padding: 5px 20px;
+  margin: 1rem;
   display: block;
   height: 39px;
   border-radius: 20px;
   border: none;
   text-transform: uppercase;
   transition: all 0.3s ease-in-out;
-  margin: 1.3rem;
 }
-.modalLogin .modal-content .modal-body .btnGoogleSignin:hover {
-  background: #f97274;
-  box-shadow: 0px 4px 35px -5px #f97274;
+.modal-content .btnLoginGoogle:hover {
+  background: #ad005d;
+  box-shadow: 0px 4px 35px -5px #ad005d;
   cursor: pointer;
 }
-.modalLogin .modal-content .modal-body .btnGoogleSigninfocus {
+.modal-content .btnLoginGoogle:focus {
+  outline: none;
+}
+.modal-content .btnRegister {
+  background-color: rgba(73, 30, 30, 0.685);
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #FFF;
+  padding: 5px 20px;
+  margin: 1rem;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+.modal-content .btnRegister:hover {
+  background: rgba(109, 45, 45, 0.685);
+  box-shadow: 0px 4px 35px -5px rgba(109, 45, 45, 0.685);
+  cursor: pointer;
+}
+.modal-content .btnRegister:focus {
+  outline: none;
+}
+.modal-content .btnResetPassword {
+  background-color: rgba(73, 30, 30, 0.685);
+  width: 90%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #FFF;
+  padding: 5px 20px;
+  margin: 1rem;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+}
+.modal-content .btnResetPassword:hover {
+  background: rgba(109, 45, 45, 0.685);
+  box-shadow: 0px 4px 35px -5px rgba(109, 45, 45, 0.685);
+  cursor: pointer;
+}
+.modal-content .btnResetPassword:focus {
   outline: none;
 }

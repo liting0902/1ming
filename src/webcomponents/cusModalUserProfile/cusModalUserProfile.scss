@@ -1,0 +1,96 @@
+@use '../../styles/buttonGlory/buttonGlory.scss';
+@use '../../styles/inputField1/inputField1.scss';
+@use '../../styles/base/base.scss';
+
+$royalblue:base.$colorRoyalBlue;
+$colorGold:base.$colorGold;
+$colorWhite:base.$colorWhite;
+
+$bg1:$royalblue;
+$bg2:lighten($bg1, 5%);
+$bg3:darken($bg1, 10%);
+$bg4:#17A080;
+
+.boxUserProfile{
+    .modal-dialog{
+        width: 95%;
+        // border: blue 2px solid;
+        background-color:$bg2; 
+    }
+    .modal-content{
+        background-color:$bg2; 
+        height:80%;
+        .emailColor{
+            color:base.$colorEmailIcon;
+        }
+        .googleColor{
+            color:base.$colorGoogleRed;
+        }
+    }
+    .modal-body{
+    
+        // border:yellow 2px solid;
+        
+        .fa-exclamation-triangle{
+            color:rgb(255, 234, 41)
+        }
+        // .uiCkbox-emailVerified:checked~{
+            // & .inputField1 .emailWarning,.emailWarning{
+                // display: none;
+            // }        
+        // }
+        // .uiCkbox-isAccountOfGoogle{
+        //     &:checked~ #btnResendPassword{
+                // display: none;
+            // }        
+        // }
+        .userID{
+            color:grey; 
+            input{
+                background-color: transparent;
+                border: 0px solid;
+            }
+        }
+        .inputField1 input{
+            width: 50%;
+    
+            &input:invalid{
+                &:invalid+.fa-check-circle {
+                    display: none;
+                }
+            }
+        }
+        .divMessageFailed{
+            border:red 2px solid;
+            text-align:center;
+            color:white;
+            border-radius: 15px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            -ms-border-radius: 15px;
+            -o-border-radius: 15px;
+    }
+    .divVerifyCode{
+        // width: 30%;
+        // border: gold 2px solid;
+        border-radius: 15px;
+      
+    }
+    .btnSave{
+        @include buttonGlory.getSigninButton(lighten($royalblue, 50%), 80%);
+        margin: 1.5rem 0;
+    }
+    .btnLighten{
+        @include buttonGlory.getSigninButton(lighten($royalblue, 50%), 80%);
+        display: inline;
+    }
+    
+    }
+}
+
+
+
+
+.footerHeight{
+    height:1rem;
+}

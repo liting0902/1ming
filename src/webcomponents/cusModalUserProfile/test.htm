@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-firestore.js"></script>
+    <!-- ============ bootstrap ============ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <!-- ============ fontAwasome ============ -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <!-- ============ sweetAlert2 ============ -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <style>
+        html,
+        body {
+            background-color: black;
+            color: #fff;
+        }
+        input{
+            display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="./cusModalUserProfile.css">
+</head>
+
+<body>
+    email<input type="email" id="iptEmail" placeholder=" " class="form-group inputField1">
+    password<input type="password" id="iptPassword" class="form-group inputField1">
+    phone no.<input id="iptPhone" class="form-group inputField1" value="+886988835792">
+    
+    
+    <!-- <button type="button" class="btnLighten" id="btnAddNumber">增加電話號碼</button> -->
+    <button id="btnVerifyNumber" type="button" class="btnLighten">驗證電話號碼</button>
+    <input type="text" id="iptVerifyCode" class="form-group inputField1" value="123456">
+    <button id="btnSendVerifyCode" type="button" class="btnLighten" >送出驗證碼</button>
+    <button type="button" class="btnLighten" id="btnDeleteNumber">刪除電話號碼</button>
+    <button id="btnRegister">註冊登入</button>
+    <button id="btnSignout">登出</button>
+    <button id="googlesign">Google登入</button>
+    <script type="module" src="./test.js"></script>
+</body>
+
+</html>

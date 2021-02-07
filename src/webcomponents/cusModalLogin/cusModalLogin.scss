@@ -1,119 +1,135 @@
-@use '../../styles/base/base.scss';
-@use '../../styles/inputField1/inputField1.scss';
 @use '../../styles/buttonGlory/buttonGlory.scss';
+@use '../../styles/inputField1/inputField1.scss';
+@use '../../styles/base/base.scss';
 
-
-$colorRoyalBlue:base.$colorRoyalBlue;
-$colorWhite:base.$colorWhite;
-$colorGold:base.$colorGold;
+$royalblue:base.$colorRoyalBlue;
 $colorGoogleRed:base.$colorGoogleRed;
-$fieldWidth:90%;
-$modalBackground:lighten($colorRoyalBlue, 20%);
 
-.backArrow, .divSignupHtm, .divForgetPassword{
-    cursor: pointer;
+.modal-dialog{
+    // margin-left:0%;
+    width: 92%;
+    // height: 550px;
+    // border: blue 2px solid;
+    background-color: lighten($royalblue,5%); 
 }
-.modalLogin{
-    
-    .modal-content{
-        background-color: $modalBackground;
-        font-size: 15px;
-        height:600px;
-        width:500px;
-        border: deeppink 1px solid;
+.modal-content {
+    // height: 90%;
+    letter-spacing: 0.1rem;
+    background-color: lighten($royalblue,5%);
 
-        .modal-header{
-            .titleText{
-                color:$colorWhite;
+    padding:1rem;
+    input[type="radio"]{
+        display:none;
+    }
+    &span{
+        font-size:1rem;
+    }
+    .modal-header {
+        h5 {
+            margin-left:1rem;
+            font-weight: bold;
+        }
+        // .headerLogin{
+        //     margin-left:2.3rem;
+        // }
+        .headerLogin,
+        .headerSignup,
+        .headerPwdReset {
+            display: none;
+        }
+        .userIcon,.returnArrow{
+            font-size:1.25rem;
+        }
+        .radioLogin:checked~ {
+            .userIcon,
+            .headerLogin {
+                display: block;
             }
-        //    input[name=headerSign]{
-        //        display: none;
-        //    }
-        //   只控制顯示header 不控制翻頁
-        & .radioLogin:checked {
-            &~.backArrow,
-            &~.labelSignup,
-            &~.labelPwdReset {
-                display: none ;
+            .returnArrow {
+                display: none;
             }
         }
-        & .radioSignup:checked {
-            &~ .labelLogin,
-            &~ .labelPwdReset {
-                display: none ;
+        .radioSignup:checked~{
+            .userIcon {
+                display: none;
+            }
+            .headerSignup{
+                display: block;
             }
         }
-        & .radioPwdReset:checked {
-            &~ .labelSignup,
-            &~ .labelLogin {
-                display: none ;
+        .radioPwdReset:checked~{
+            .userIcon {
+                display: none;
             }
-        }
-
-        }
-        .modal-body {
-            border: rgb(212, 255, 20) 1px solid;
-            [name=sign]{display: none;}
-
-            position: relative;
-        
-            // three forms: loginForm, signupForm, pwdResetForm
-            & .loginForm,
-            .signupForm,
-            .pwdResetForm {
-                position: absolute;
-                height: 90%;
-                width: 80%;
-                border-radius: 10px;
-                padding: 80px 50px;
-                // background-color: rgba(10, 27, 41);
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                transform: rotateY(180deg);
-                backface-visibility: hidden;
-                transition: all 1s;
-                line-height: 30px;
-            }
-            //利用label 控制翻頁
-            // default 
-            .ckboxLogin:checked~.loginForm {
-                transform: rotateY(0deg);
-            }
-            //For sign up
-            .ckboxSignup:checked~.signupForm {
-                transform: rotateY(0deg);
-            }
-            // for PWD reset
-            .ckboxPwdReset:checked~.pwdResetForm {
-                transform: rotateY(0deg);
-            }
-        
-        .ckboxKeepSignin{
-            padding: 10px;
-
-            & input {
-                margin: 10px;
-            }
-        }
-        .divSignupHtm, .divForgetPassword{
+            .headerPwdReset {
             display: block;
         }
-        .btnEmailSignin{
-            $blueColor:lighten($colorRoyalBlue,50%);
-            @include buttonGlory.getSigninButton($blueColor,$fieldWidth);
-            margin: 1.3rem;
         }
-        .btnGoogleSignin{
-            @include buttonGlory.getSigninButton($colorGoogleRed, $fieldWidth);
-            margin: 1.3rem;
-        }
+    }
+
+    .modal-body {
+        height: 500px;
+        position: relative;
+        .formLogin,
+        .formSignup,
+        .formPwdReset {
+            position: absolute;
+            top: 0;
+            left:0;
+            bottom: 0;
+            right:0;
+            // border: deeppink 2px solid;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+            transition: 1s;
+            -webkit-transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -ms-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            -webkit-transition: 1s;
+            -moz-transition: 1s;
+            -ms-transition: 1s;
+            -o-transition: 1s;
         }
 
+        .flipToLogin:checked~.formLogin {
+            transform: rotate(0);
+            -webkit-transform: rotate(0);
+            -moz-transform: rotate(0);
+            -ms-transform: rotate(0);
+            -o-transform: rotate(0);
+        }
 
+        // .formSignup,
+        .flipToSignup:checked~.formSignup {
+            transform: rotate(0);
+        }
+
+        // .formPwdReset
+        .flipToPwdReset:checked~.formPwdReset {
+            transform: rotate(0);
+        }
     }
     
+    input[required]{
+        @include inputField1.inputCheckValid(1rem, rgb(1, 163, 1), 0.5)
+    }
+    .btnLoginEmail{
+        @include buttonGlory.getSigninButton(lighten($royalblue,10%), 90%)
+    }
+    .btnLoginGoogle{
+    
+        @include buttonGlory.getSigninButton(darken($colorGoogleRed,30%), 90%)
+    }
+    .btnRegister{
+        @include buttonGlory.getSigninButton(rgba(73, 30, 30, 0.685), 90%)
+    }
+    .btnResetPassword{
+        @include buttonGlory.getSigninButton(rgba(73, 30, 30, 0.685), 90%)
+    }
+  
 
+    
 }
+
 

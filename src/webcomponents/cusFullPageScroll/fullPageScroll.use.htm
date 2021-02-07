@@ -11,8 +11,8 @@
         import fullPageScroll from './fullPageScroll.js';
         import {useComponent} from '../../js/useComponent/useComponent.js'
         useComponent('cus-full-page-scroll','./fullPageScroll.htm', fullPageScroll)
-        .then((newEle) => {
-            // let newEle = new compObj.ctor(compObj.templateContent);
+        .then((compObj) => {
+            let newEle = new compObj.ctor(compObj.templateContent);
             document.body.appendChild(newEle);
             console.log(newEle);
             // newEle.scrollToEle('#qanda');

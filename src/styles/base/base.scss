@@ -4,11 +4,11 @@
     box-sizing:border-box;
 }
 
-$colorRoyalBlue:rgb(6, 16, 27);
-$colorWhite:rgb(252, 251, 239);
+$colorRoyalBlue:rgb(2, 12, 22);
+$colorWhite:rgb(187, 187, 186);
 $colorGold:rgb(190, 172, 116);
-$colorGoogleRed:#f74144;
-$colorEmailIcon:lime;
+$colorGoogleRed:deeppink;
+$colorEmailIcon:rgb(180, 255, 145);
 $colorTitle2:white;
 
 $navbarHeight:5rem;
@@ -80,15 +80,14 @@ img{
     }
 }
 
-.bd1 {
-    border: red 2px solid;
+
+.btnClose{
+    color:white;
+    font-size: 1.5rem;
+    &:hover{
+        color:rgb(250, 250, 151);
+    }
 }
-.bd2 {
-    border: rgb(248, 244, 7) 2px solid;
-}
-.bd3 {
-    border: rgb(7, 111, 248) 2px solid;
-}
-.bd4 {
-    border: rgb(7, 248, 119) 2px solid;
+.pointer {
+    cursor: pointer;
 }

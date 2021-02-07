@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "buildMing2": "cd .. && npm run build && cd host",
+        "copyfiles":"cp -R ../dist/ming2 ./public/",
+        
+        "deployHost":"firebase deploy --only hosting"
+    }
+}

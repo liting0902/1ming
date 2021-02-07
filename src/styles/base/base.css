@@ -5,7 +5,7 @@
 }
 
 html, body {
-  background-color: #06101b;
+  background-color: #020c16;
   color: white;
 }
 
@@ -64,7 +64,7 @@ img {
   -o-border-radius: 20px;
 }
 .b-btnGolden:hover {
-  color: #fcfbef;
+  color: #bbbbba;
   background-color: #beac74;
   transition-duration: 0.3s;
   border-radius: 20px;
@@ -74,18 +74,14 @@ img {
   box-shadow: none;
 }
 
-.bd1 {
-  border: red 2px solid;
+.btnClose {
+  color: white;
+  font-size: 1.5rem;
+}
+.btnClose:hover {
+  color: #fafa97;
 }
 
-.bd2 {
-  border: #f8f407 2px solid;
-}
-
-.bd3 {
-  border: #076ff8 2px solid;
-}
-
-.bd4 {
-  border: #07f877 2px solid;
+.pointer {
+  cursor: pointer;
 }

@@ -1,0 +1,36 @@
+@use '../../styles/base/base.scss';
+
+$blueColor:base.$colorRoyalBlue;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ 
+.bodySetting{
+    background-color: $blueColor;
+    color: white;
+}
+html,body{
+    scroll-behavior: smooth;
+}
+.nav-item{
+    display: inline-flex;
+}
+#aUserLogin{
+color:white;
+font-weight: bold;
+
+}
+#liUserDropdown{
+    
+    #spanDisplayEmail, .fa-user{
+        color:rgb(172, 162, 32);
+        font-weight: bold;
+    }
+    .dropdown-menu{
+        font-weight: bold;
+        width:17rem;
+        background-color: rgba(255, 255, 255, 0.678);
+    }
+}

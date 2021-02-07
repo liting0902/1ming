@@ -2,10 +2,11 @@
     background-color: $color;
     width: $width;
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
+    font-size: 0.8rem;
     letter-spacing: 1px;
     color: #FFF;
     padding: 5px 20px;
+    margin: 1rem;
     display: block;
     height: 39px;
     border-radius: 20px;
@@ -17,7 +18,7 @@
         box-shadow: 0px 4px 35px -5px lighten($color: $color, $amount: 10%);
         cursor: pointer;
     }
-    &focus{
+    &:focus{
         outline: none;
     }
 

@@ -1,250 +1,271 @@
-/**@enum {string} */
-// .radioLogin, .radioSignup, .radioPwdReset
-const ENUM_switchPage = {
-    radioLogin: "radioLogin",
-    radioSignup:"radioSignup",
-    radioPwdReset:"radioPwdReset"
-}
+import userDataRegisterToDB from '../../js/firebase/userDataRegisterToDB.js';
 
-export default class cusModalLogin extends HTMLElement{
-    /**@param {HTMLElement} templateContent */
-    /**@param {import("./csuModalLogin").plugins;} */
-    constructor(templateContent, plugins){
+export default class cusModalLogin extends HTMLElement {
+    constructor(templateContent) {
         super();
-        /**{Swal, Email_ResendPassword()} */
-        this.plugins = plugins;
-        this.firebase = null;
-        this.db = null;
-
-        if(window.firebase)
-        this.setFirebase(window.firebase);
-
-        if(templateContent)
-        this.appendTemplate(templateContent);
-
-        /**
-         * 
-         * @param {number} a 
-         * @param {number} b 
-         */
-        function add(a,b){
-            return a+b
-        }
-        //initial value
+        this.templateContent = templateContent;
+        this.appendTemplate(this.templateContent);
+        this.setAuth_getRedirectResult();
         this.proxyUI = {
-            /**@prop {string} - checked or value*/
-            bindIptSigninEmail: '',
-            bindIptSigninPWD:'',
-            bindIptRegisterEmail:'',
-            bindIptRegisterPWD1:'',
-            bindIptRegisterPWD2:'',
-            bindIptResentPwdEmail:'',
-            bindCkboxSigninKeepIn:false,
-            switchPage: ENUM_switchPage.radioLogin
+            bindPersistenceLogin: true,
+            onSignup: false,
+            onPwdReset: false,
+            onLogin: true,
+            bindIptLoginEmail: "",
+            bindIptLoginPwd: "",
+            bindIptRegisterEmail: "",
+            bindIptRegisterPwd1: "",
+            bindIptRegisterPwd2: "",
+            bindIptResetPwdEmail: "",
         }
-
-        let self = this;
-        this.proxyUI = new Proxy(this.proxyUI,{
-            /**@param {string} prop */
-            get:(target,prop) => {
-                /**@type {HTMLInputElement} */
-                let elem =this.querySelector([`${prop}`])
-                if(prop==='bindCkboxSigninKeepIn')
-                return elem.checked
+        this.proxyUI = new Proxy(this.proxyUI, {
+            get: (target, prop) => {
+                let elem = this.querySelector(`[${prop}]`)
+                if (prop === "bindPersistenceLogin")
+                    return elem.checked;
                 else
-                return elem.value;
-            }
-            ,
-            set:(target,prop,value) => {
-                let elem;
-                switch (prop){
-                    case 'switchPage' :
-                        switch (value){
-                            case ENUM_switchPage.radioLogin:
-                                elem = self.querySelector('.modal-header .radioLogin');
-                                elem.checked = true;
-
-                                let ckboxLogin = self.querySelector('.modal-body .ckboxLogin')
-                                ckboxLogin.checked = true;
-                                console.log("switchPage to radioLogin")
-                                break;
-                            case ENUM_switchPage.radioSignup:
-                                elem = this.querySelector('.modal-header .radioSignup')
-                                elem.checked = true;
-                                let ckboxSignup = self.querySelector('.modal-body .ckboxSignup')
-                                ckboxSignup.checked = true;
-                                console.log("switchPage to radioSignup")
-                                break;
-                                // case ENUM_switchPage.radioForgetPwd:
-                                // elem = self.querySelector('.modal-header .radioPwdReset');
-                                // elem.checked = true;
-                                
-                                // this.querySelector('.modal-body .ckboxPwdReset').checked = true;
-                                // break;
-
-                            case ENUM_switchPage.radioPwdReset:
-                                this.querySelector('.modal-header .radioPwdReset').checked = true;
-                                this.querySelector('.modal-body .ckboxPwdReset').checked = true;
-                                // this.querySelector('.modal-body .ckboxPwdReset').checked = true;
-                                console.log("switchPage radioPwdReset")
-                                break;
-                            default:
-                                console.log("error in switchPage")
-                                break;
-                        }
-                        return true
+                    return elem.value;
+                // return target[prop];
+            },
+            set: (target, prop, value) => {
+                switch (prop) {
+                    case 'onSignup':
+                        let [...onSignup] = this.getElementsByClassName('onSignup')
+                        console.log(onSignup)
+                        onSignup.forEach((element) => {
+                            element.checked = true
+                        })
                         break;
-                default:
-                    elem = self.querySelector(`[${prop}]`);
-                    if (prop === "bindCkboxSigninKeepIn")
-                    elem.checked = value
-                    else 
-                    elem.value = value;
-                    break;    
+                    case 'onPwdReset':
+                        let [...onPwdReset] = this.getElementsByClassName('onPwdReset')
+                        console.log(onPwdReset)
+                        onPwdReset.forEach((element) => {
+                            element.checked = true
+                        })
+                        break;
+                    case 'onLogin':
+                        let [...onLogin] = this.getElementsByClassName('onLogin')
+                        onLogin.forEach((element) => {
+                            element.checked = true
+                        })
+                        console.log('to Login')
+                        break;
+                    case 'bindPersistenceLogin':
+                        let bindPersistenceLogin = this.querySelector('[bindPersistenceLogin]')
+                        bindPersistenceLogin.checked = true;
+                        console.log("LOG: ~ file: cusModalLogin.js ~ line 54 ~ cusModalLogin ~ constructor ~ bindPersistenceLogin.checked", bindPersistenceLogin.checked)
+                    default:
+                        let elem = this.querySelector(`[${prop}]`)
+                        elem.value = value;
+                        break;
                 }
-                return true;
+                return target[prop] = value;
             }
-            
         });
-        
-        // Set proxyUI.switchPage value
-        let backArrow = this.querySelector('.modal-header .backArrow')
-        backArrow.addEventListener('click', (e) => {
-            this.proxyUI.switchPage = ENUM_switchPage.radioLogin;
+
+    }
+    appendTemplate = (templateContent) => {
+        if (templateContent)
+            this.appendChild(templateContent);
+        let divSignup = this.querySelector('#divSignup');
+        let divPwdReset = this.querySelector('#divPwdReset');
+        divSignup.addEventListener('click', (i) => {
+            this.proxyUI.onSignup = true;
         })
-        // Goto Signup Page
-        let divSignupHtm = this.querySelector('.modal-body .divSignupHtm')
-        divSignupHtm.addEventListener('click', (e) => {
-            this.proxyUI.switchPage = ENUM_switchPage.radioSignup;
-        })
-        // Goto ForgetPWD page
-        let divForgetPassword = this.querySelector('.modal-body .divForgetPassword')
-        divForgetPassword.addEventListener('click', (e) => {
-            this.proxyUI.switchPage = ENUM_switchPage.radioPwdReset;
+        divPwdReset.addEventListener('click', () => {
+            this.proxyUI.onPwdReset = true;
+        });
+        let returnArrow = this.querySelector('.returnArrow');
+        returnArrow.addEventListener('click', () => {
+            this.proxyUI.onLogin = true;
         })
 
-    };// constructor ends
-    
-    appendTemplate(templateContent) {
-        this.appendChild(templateContent);
-        console.log("100:" ,this)
-        
-    };//appendTemplateends
+        let formLogin = this.querySelector('.formLogin');
+        formLogin.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-    setFirebase(_firebase){
-        this.firebase = _firebase;
-        this.db = this.firebase.firestore();
-        this.setAuth_getRedirectResult();    
-    };//setFirebase ends
-    setAuth_getRedirectResult(){
-        // let self = this;
-        this.firebase.auth().getRedirectResult().then((result) => {
-        // console.log("LOG: ~ file: cusModalLogin.js ~ line 112 ~ cusModalLogin ~ appendTemplate ~ this", this)
-        // console.log("LOG: ~ file: cusModalLogin.js ~ line 112 ~ cusModalLogin ~ appendTemplate ~ self", self)
-            
-            if(result.user){
-                this.showModal(false);
-            };
-        }
-        ).catch((error) => {
-        console.log("cusModalLogin ~ setAuth_getRedirectResult ~ error", error);
-            
-        }
-        );
-    };//setAuth_getRedirectResult ends
-    /**@function - show tha modal login */
-    /**@param {boolean} isShow */
-    showModal(isShow){
-        let iptEmail = this.querySelector('.modal .loginForm input[type="email"]');
-        $('#modalLogin').on('shown.bs.modal',() => {
-            iptEmail.focus(); // once the modal popped up the cursor stay in the Email input
+            this.Email_Login().then((email) => {
+                console.log(typeof email)
+                // var name = email.match(/^([^@]*)@/)[1];
+                let name = email.split('@')[0]
+                Swal.fire({
+                    title: `Hi ${name} , welcome aboard`,
+                    icon: 'success'
+                });
+
+            });
+            this.isShowModal(false);
+
+
         })
-        let action = null;
-            if (isShow == true)
-            action = 'show';
-            else 
-            action = 'hide';
-            $('#modalLogin').modal(action);
-    };//showModal ends
-    //('../../js/firebase/FirebaseMJS.js')
-    /**@param {import('../../js/firebase/FirebaseMJS.js').Email_ResendPassword(emailAddress, inFirebase, swal, funcCloseModal)} */
-    Email_ResendPassword(_email){
-        // let self = this;
-        return this.plugins.Email_ResendPassword(
-            _email,
-            window.firebase,
-            this.plugins.Swal,
-            ()=>{
-                this.showModal(false);
-                this.proxyUI.switchPage = ENUM_switchPage.radioLogin; //after resending PWD ,back to radioLogin
-            }
-        )
-    };//Email_ResendPassword ends
-    Email_Register(){
+        
+        let formPwdReset = this.querySelector('.formPwdReset');
+        formPwdReset.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let email = this.proxyUI.bindIptResetPwdEmail;
+            console.log('---', this.proxyUI.bindIptResetPwdEmail)
+            this.Email_ResendPassword(email);
+            this.proxyUI.onLogin = true;
+        })
+
+
+        let formSignup = this.querySelector('.formSignup');
+        formSignup.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.Email_Register();
+            this.isShowModal(false);
+        })
+
+        let btnLoginGoogle = this.querySelector('.btnLoginGoogle');
+        btnLoginGoogle.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.signinViaGoogle();
+            this.setAuth_getRedirectResult().then((result) => {
+                console.log(result)
+            })
+
+
+        })
+
+
+    }; // appendTemplate ends
+
+    setAuth_getRedirectResult = () => {
+        return firebase.auth()
+            .getRedirectResult()
+            .then((result) => {
+                console.log("LOG: ~ get redirect result", result.user.email)
+
+                // The signed-in user info.
+                var user = result.user;
+                let email = user.email;
+                let name = email.split('@')[0]
+                if(user){
+                    Swal.fire({
+                        title: `Hi ${name} , welcome aboard`,
+                        icon: 'success'
+                    });
+                }
+                return user
+                console.log(user.email)
+            }).catch((error) => {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+
+                console.log(`Get redirect result: code/${errorCode}, message/${errorMessage}`)
+            });
+    };
+
+
+    Email_Login = () => {
+        let email = this.proxyUI.bindIptLoginEmail;
+        let password = this.proxyUI.bindIptLoginPwd;
+        let persistence = this.getPersistence(this.proxyUI.bindPersistenceLogin)
+        console.log(persistence)
+        return firebase.auth().setPersistence(persistence).then(() => {
+            return firebase.auth().signInWithEmailAndPassword(email, password)
+                .then((user) => {
+                    console.log(user)
+                    return user.user.email;
+
+                    // Signed in 
+                    // ...
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    Swal.fire({
+                        title: 'Fail to Log in',
+                        text: `${errorMessage}`,
+                        icon: 'warning',
+                        button: 'close'
+                    });
+                });
+        })
+        
+    };
+
+    signinViaGoogle = () => {
+        var provider = new firebase.auth.GoogleAuthProvider();
+        let persistence = this.getPersistence(this.proxyUI.bindPersistenceLogin)
+        return firebase.auth().setPersistence(persistence).then(() => {
+            return firebase.auth().signInWithRedirect(provider).then(function (result) {
+                var token = result.credential.accessToken;
+                var user = result.user;
+                console.log("LOG: ~ file: 1.htm ~ line 44 ~ firebase.auth ~ user", user)
+            });
+        })
+    }
+
+    Email_ResendPassword = (email) => {
+        firebase.auth().sendPasswordResetEmail(email).then(() => {
+            Swal.fire({
+                title:'密碼重設已寄出',
+                text: '密碼重新設定連結已寄出, 請至信箱收信',
+                icon: 'success'
+            });
+        }).catch((e) => {
+            Swal.fire({
+                title: 'Failed',
+                icon: 'warning',
+                text:`${e.code}`
+            });
+            console.log(e)
+        })
+    };
+
+    Email_Register = () => {
         let email = this.proxyUI.bindIptRegisterEmail;
-        let password = this.proxyUI.bindIptRegisterPWD1;
-        let persistence = this.getPersistence(this.proxyUI.bindCkboxSigninKeepIn);
-        this.firebase.auth().setPersistence(persistence).then(() => {
-            return this.firebase.auth().createWithEmailAndPassword(email, password);
-        }
-        ).then(() => {
-            let user = this.firebase.auth().currentUser;
-            return user.sendEmailVerification();
-        }
-        ).catch((error_Email_Register) => {
-            console.log(`LOG:error_Email_Register: ${error_Email_Register.code} : ${error_Email_Register.message}`)   
-        }
-        );
+        let p1 = this.proxyUI.bindIptRegisterPwd1;
+        let p2 = this.proxyUI.bindIptRegisterPwd2;
+        let password = p1 === p2 ? p1 : Swal.fire({
+            title: "錯誤!",
+            text: "確認密碼輸入需相同!",
+            icon: "warning",
+            button: "Close",
+        });
+        console.log(email, password)
 
-    };//Email_Register ends
-    getPersistence(isCkboxSigninKeepIn){
-        if(isCkboxSigninKeepIn)
-            return window.firebase.auth.Auth.Persistence.LOCAL;
-        else 
-            return window.firebase.auth.Auth.Persistence.NONE;
-    };//getPersistence ends
-    Email_Login(){
-        let email = this.proxyUI.bindIptSigninEmail;
-        let password = this.proxyUI.bindIptSigninPWD;
-        let persistence = this.getPersistence(this.proxyUI.bindCkboxSigninKeepIn);
-        // let self = this;
-        this.firebase.auth().setPersistence(persistence).then(
-            () => {
-                this.showModal(false)
-                return this.firebase.auth().signInWithEmailAndPassword(email, password)
-            }
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((user) => {
+                console.log("LOG: ~ line 228 ~ cusModalLogin ~ user", user.uid, user.email)
+                Swal.fire({
+                    text: `註冊且登入成功`,
+                    button: 'Close'
+                });
             
-        ).catch((error) => {
-            console.log(`LOG~ error in Email_Login: ${error.code}: ${error.message}`)
-        }
-        );
-    
+                userDataRegisterToDB();
+            })
+            .catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                console.log(`Email_Register~ ${errorCode}: ${errorMessage}`)
+                Swal.fire({
+                    title: "Fail to register!",
+                    text: `${errorMessage}!`,
+                    icon: "warning",
+                    button: "Close",
+                });
+            });
+    };
 
-    };//Email_Login ends
-    Google_Register_Login(){
-        // let self = this;
-        let provider = new firebase.auth.GoogleAuthProvider();
-        let persistence = this.getPersistence(this.proxyUI.bindCkboxSigninKeepIn);
-        this.firebase.auth().setPersistence(persistence).then(
-            () => {
-                return this.firebase.auth().signInWithRedirect(provider);
-            }            
-        ).catch((error) => {
-            console.log(`LOG~ error in Google_Register_Login: ${error.code}: ${error.message}`)
-        }
-        );
-    };//Google_Register_Login ends
-    getErrorMessageZHTW(){};//getErrorMessageZHTW ends
-    
+    isShowModal(isShow) {
+        if (isShow == true)
+            $('#modalLogin').modal('show')
+        else
+            $('#modalLogin').modal('hide');
+    };
 
-    // appendTemplate(){};
-    // setFirebase(){};
-    // setAuth_getRedirectResult(){};
-    // showModal(isShow){};
-    // Email_ResendPassword(){};
-    // Email_Register(){};
-    // getPersistence(isCkboxSigninKeepIn){};
-    // Email_Login(){};
-    // Google_Register_Login(){};
-    // getErrorMessageZHTW(){};
+    getPersistence(isKeepSignin) {
+        if (isKeepSignin)
+            return window.firebase.auth.Auth.Persistence.LOCAL
+        else
+            return window.firebase.auth.Auth.Persistence.NONE
+    };
+
+
 }
+
+// setFirebase(){};
+// getErrorMessageZHTW(){};

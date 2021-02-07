@@ -1,13 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ModalUserProfile</title>
+    <title>User Profile</title>
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-firestore.js"></script>
+    <!-- ============ bootstrap ============ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <!-- ============ fontAwasome ============ -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <!-- ============ sweetAlert2 ============ -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="stylesheet" href="./cusModalUserProfile.css">
+    <style>
+        html,
+        body {
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
 </head>
+
 <body>
     <template>
-        
+
+
+        <div class="modal fade boxUserProfile" id="modalProfile" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <i class="fas fa-envelope emailColor d-none" id="iFaEnvelope" title="Email Login"></i>
+                            <i class="fab fa-google googleColor d-none" id="iFaGoogle" title="Google Login"></i>
+                        <h5 class="modal-title">我的檔案</h5>
+                        <button class="close btnClose" data-dismiss="modal"><span>&times;</span></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <!-- <input type="checkbox" class="uiCkbox-emailVerified b-displayNone" id="uiCkboxEmailVerified" title="Eamil Verified" checked>
+                    <input type="checkbox" class="uiCkbox-isAccountOfGoogle b-displayNone" id="uiCkboxIsAccountOfGoogle" title="is Account Of Email" checked> -->
+                        <div class="userID">
+                            <label class="userID" for='iptAccount'>帳號ID</label>
+                            <input class="userID" type="text" id="iptAccount" class="" readonly>
+                        </div>
+                        <div class="form-group inputField1">                                                        
+                            <!-- <i class="fas fa-envelope emailColor d-none" id="iFaEnvelope" title="Email Login"></i>
+                            <i class="fab fa-google googleColor d-none" id="iFaGoogle" title="Google Login"></i> -->
+                            <span>帳號信箱</span>
+                            <input type="email" id="iptEmail" placeholder="id=iptEmail" readonly>
+                            <i class="fas fa-exclamation-triangle emailWarning d-none" id="iFaWarningEmailNotVerified"
+                                title="Email尚未通過驗證"></i>
+                        </div>
+                        <div class="form-group inputField1">
+                            <span>姓名</span>
+                            <input type="text" id="iptName" placeholder="id=iptName" bindIptRegisterEmail required
+                                autocomplete="username">
+                        </div>
+                        <div class="form-group inputField1">
+                            <span>行動電話</span>
+                            <input type="tel" placeholder="如:0912345678" id="iptPhone" isDisable>
+                            <div>
+                                <button type="button" class="btnLighten" id="btnVerifyPhone" isShow
+                                    isDisable>驗證電話號碼</button>
+                            </div>
+                            <button type="button" class="btnLighten" id="btnDeletePhone" isShow>刪除電話號碼</button>
+                        </div>
+                        <!-- <div id="divInputPhoneFailed" class="divMessageFailed" isShow>輸入電話失敗</div> -->
+
+                        <div id="divVerifyCode" class="form-group inputField1 divVerifyCode" isShow>
+                            <span class="titleWhite">輸入簡訊驗證碼</span>
+                            <input type="text" id="iptPhoneVerifyCode" value="123456" class="width30" isDisable>
+                            <button id="btnSendVerifyCode" type="button" class="btnLighten" isDisable>送出驗證碼</button>
+                        </div>
+                        <!-- <div id="divVerifyFailed" class="divMessageFailed" isShow>
+                        驗證失敗id="divVerifyFailed"
+                    </div> -->
+                        <div class="form-group inputField1">
+                            <span class="titleWhite">預設地址</span>
+                            <input type="text" id="iptAddress" placeholder="id=iptAddress" bindIptAddress
+                                autocomplete="street-address">
+                        </div>
+                        <button type="button" id="btnResendEmailVerify"
+                            class="btnSave emailWarning d-none">重寄Email認證信</button>
+                        <button type="submit" id="btnSaveProfile" class="btnSave">更新並儲存</button>
+
+                        <button type="button" id="btnResendPassword" class="btnSave d-none">重設帳號密碼</button>
+                        <div class="footerHeight">
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </template>
+    <script>
+        $('#modalProfile').modal('show');
+    </script>
+    <script type="module" src="cusModalUserProfile.js"></script>
 </body>
+
 </html>

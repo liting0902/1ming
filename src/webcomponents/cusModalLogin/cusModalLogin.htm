@@ -20,7 +20,13 @@
     <!-- ============ fontAwasome ============ -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
+    <!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
     <link rel="stylesheet" href="./cusModalLogin.css">
     <style>
         html,
@@ -33,108 +39,87 @@
 
 <body>
     <template>
-       
-    
-    <div class="modal modalLogin" id="modalLogin" tabindex="-1" role="login-dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content ">
-                <div class="modal-header ">
-
-                    <!-- 程式碼翻頁back flip:  .radioLogin, .radioSignup, .radioPwdReset-> -->
-                    <input type="radio" class="radioLogin" name="headerSign" checked>
-                    <input type="radio" class="radioSignup" name="headerSign">
-                    <input type="radio" class="radioPwdReset" name="headerSign">
-                    <!-- back arrow -->
-                    <span class="backArrow"><i class="fas fa-arrow-alt-circle-left"></i></span>
-                    <label class="labelLogin">登入</label>
-                    <label class="labelSignup">註冊新Eamil帳號</label>
-                    <label class="labelPwdReset">忘記密碼</label>
-
-                    <button type="button" class="close titleText" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-
-
-                    <!-- to flip Forms : #ckboxLogin, #ckboxSignup, #ckboxPwdReset -->
-                    <input class="ckboxLogin" type="radio" name="sign" checked>
-                    <input class="ckboxSignup" type="radio" name="sign">
-                    <input class="ckboxPwdReset" type="radio" name="sign">
-
-                    <!-- three forms: .loginForm, .signupForm, .pwdResetForm -->
-                    <!-- loginForm -->
-                    <form action="" class="loginForm">
-                        <div class="form-group">
-                            <span>Email</span>
-                            <input type="email" placeholder="example@xxx.com" bindIptSigninEmail required
-                                autocomplete="username">
-                            <i class="fas fa-check-circle" style="color: chartreuse;"></i>
-                        </div>
-                        <div class="form-group">
-                            <span>Password</span>
-                            <input type="password" placeholder="請填入大寫或小寫英文,或數字, 至少8位數" pattern="^[0-9a-zA-Z]{8,}$"
-                                bindIptSigninPWD required autocomplete="current-password">
-                            <i class="fas fa-check-circle" style="color: chartreuse;"></i>
-                        </div>
-                        <label for="" class="ckboxKeepSignin">
-                            <input type="checkbox" name="remember" bindCkboxSigninKeepIn checked>
-                            <span>持續保持登入</span>
-                        </label>
-                        <div for="ckboxSignup" class="divSignupHtm ">註冊新Eamil帳號  </div>
-                        <div for="ckboxPwdReset" class="divForgetPassword ">  忘記密碼?</div>
+        <div class="modal modalLogin fade" id="modalLogin" tabindex="-1" role="dialog" >
+            <div class="modal-dialog modal-md" role="documnet">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <input type="radio" class="radioLogin onLogin" name="headerSign" checked>
+                        <input type="radio" class="radioSignup onSignup" name="headerSign">
+                        <input type="radio" class="radioPwdReset onPwdReset" name="headerSign">
+                        <span class="userIcon"><i class="far fa-user-circle"></i></span>
+                        <span class="returnArrow pointer"><i class="fas fa-arrow-alt-circle-left"></i></span>
                         
-                        <button class="btnEmailSignin">Email Sign In</button>
-                        <button type="button" class="btnGoogleSignin">Google Sign In</button>
-                    </form>
+                        <h5 class="headerLogin">登入視窗</h5>
+                        <h5 class="headerSignup">註冊新帳號</h5>
+                        <h5 class="headerPwdReset">忘記密碼</h5>
+                        <button type="button" class="close btnClose" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="radio" class="flipToLogin onLogin" name="form" checked>
+                        <input type="radio" class="flipToSignup onSignup" name="form">
+                        <input type="radio" class="flipToPwdReset onPwdReset" name="form">
+                        <form action="" class="formLogin">
+                            <div class='form-group inputField1'>
+                                <span>電子信箱:</span>
+                                <input bindIptLoginEmail type="email" placeholder="xxxx@xxx.com" value="aaa@aaa.com"
+                                    required autocomplete="username"><span></span>
+                            </div>
+                            <div class='form-group inputField1'>
+                                <span>密碼:</span>
+                                <input bindIptLoginPwd type="password" pattern="^[0-9a-zA-Z]{8,}" value="aaaaaaaa"
+                                    required autocomplete="current-password"><span></span>
 
-                    <!-- signupForm -->
-                    <form action="" class="signupForm">
-                        <div class="form-group">
-                            <h2>註冊新Eamil帳號</h2>
-                            <span>Email</span>
-                            <input type="email" placeholder="example@xxx.com" bindIptRegisterEmail required
-                                autocomplete="username">
-                            <i class="fas fa-check-circle" style="color: chartreuse;"></i>
-                        </div>
-                        <div class="form-group">
-                            <span>Password</span>
-                            <input type="password" placeholder="請填入大寫或小寫英文,或數字, 至少8位數" pattern="^[a-zA-Z0-9]{8,0}$"
-                                bindIptRegisterPWD1 required autocomplete="new-password">
-                        </div>
-                        <div class="form-group">
-                            <span>Password</span>
-                            <input type="password" placeholder="請填入大寫或小寫英文,或數字, 至少8位數" pattern="^[a-zA-Z0-9]{8,0}$"
-                                bindIptRegisterPWD2 required autocomplete="new-password">
-                        </div>
-                        <button class="form-group btnEmailSignin">註冊並發送認證Email到信箱</button>
-                    </form>
+                            </div>
 
-                    <!-- pwdResetForm -->
-                    <form action="" class="pwdResetForm">
-                        <h2>忘記密碼</h2>
-                        <div class="form-group">
-                            <span>請輸入已註冊Email入已註冊Email</span>
-                            <input type="email" placeholder="example@xxx.com" bindIptResentPwdEmail required
-                                autocomplete="username">
-                            <i class="fas fa-check-circle" style="color: chartreuse;"></i>
-                        </div>
-                        <button class="form-group btnEmailSignin">重寄密碼</button>
-                    </form>
+                            <label>
+                                <input bindPersistenceLogin type="checkbox" > 持續保持登入
+                            </label>
+                            <div id="divSignup" class="pointer">註冊新帳號</div>
+                            <div id="divPwdReset" class="pointer">忘記密碼</div>
+                            <button class="btnLoginEmail">使用Email登入</button>
+                            <button type="button" class="btnLoginGoogle">使用Google帳號登入</button>
+
+                        </form>
+                        <form action="" class="formSignup">
+                            <div class="form-group inputField1">
+                                <span>電子信箱:</span>
+                                <input bindIptRegisterEmail type="email" placeholder="xxxx@xxx.com" value="aaa@aaa.com"
+                                    required autocomplete="username"><span></span>
+                            </div>
+                            <div class="form-group inputField1">
+                                <span>密碼:</span>
+                                <input bindIptRegisterPwd1 type="password" pattern="^[0-9a-zA-Z]{8,}" value="aaaaaaaa"
+                                    required autocomplete="new-password"><span></span>
+
+                            </div>
+                            <div class="form-group inputField1">
+                                <span>確認密碼</span>
+                                <input bindIptRegisterPwd2 type="password" pattern="^[0-9a-zA-Z]{8,}" value="aaaaaaaa"
+                                    required autocomplete="new-password"><span></span>
+                            </div>
+
+                            <button class="btnRegister">註冊並登入</button>
+                        </form>
+                        <form action="" class="formPwdReset">
+                            <div class="form-group inputField1">
+                                <span>電子信箱:</span>
+                                <input bindIptResetPwdEmail type="email" placeholder="xxxx@xxx.com"
+                                    value="liting0902@gmail.com" required autocomplete="username"><span></span>
+                            </div>
+                            <button class="btnResetPassword">重新發送認證碼</button>
+                        </form>
+
+                    </div>
                 </div>
-                <div testArea></div>
-                <div class="footerHeight"></div>
-
             </div>
-
         </div>
-
-    </div>
     </template>
     <script src="cusModalLogin.js"></script>
-    <script>$('#modalLogin').modal('show');</script>
+    <script>
+        $('#modalLogin').modal('show');
+    </script>
 </body>
 
 </html>

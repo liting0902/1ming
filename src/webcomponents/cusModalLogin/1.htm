@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <script src="1.js"></script>
+    </body>
+</head>
+
+<body>
+
+    <input type="radio" class="radioLogin" name="headerSign" checked>
+    <input type="radio" class="radioSignup" name="headerSign">
+    <input type="radio" class="radioPwdReset" name="headerSign">
+    <input type="radio" class="radioLogin" name="form" checked>
+    <input type="radio" class="radioSignup" name="form">
+    <input type="radio" class="radioPwdReset" name="form">
+    <button class="btnLoginGoogle">Google Log in</button>
+    <button class="signout">Sign out</button>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyAQE0eM5lImWNijYayYa6-_gYQKsK1PjUk",
+            authDomain: "ming2-1a7e1.firebaseapp.com",
+            databaseURL: "https://ming2-1a7e1.firebaseio.com",
+            projectId: "ming2-1a7e1",
+            storageBucket: "ming2-1a7e1.appspot.com",
+            messagingSenderId: "744313163862",
+            appId: "1:744313163862:web:0efded707b076b5449abf7",
+            measurementId: "G-VG9H7FJMQ7"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+        let btnLoginGoogle = document.querySelector('.btnLoginGoogle');
+        btnLoginGoogle.addEventListener('click', (e) => {
+            e.preventDefault();
+            // 
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithRedirect(provider).then(function (result) {
+                var token = result.credential.accessToken;
+                var user = result.user;
+                alert('signInWithRedirect')
+            });
+        })
+
+        let signout = document.querySelector('.signout');
+        signout.addEventListener('click', () => {
+            firebase.auth().signOut().catch((result) => {
+                console.log("LOG: ~ file: 1.htm ~ line 49 ~ signout.addEventListener ~ result", result)
+
+            })
+        })
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                console.log('onAuthStateChanged')
+                // User is signed in.
+                console.log('new login === ', {
+                    dispalyName: user.dispalyName,
+                    email: user.email,
+                    emailVerified: user.emailVerified,
+                    phoneNumber: user.phoneNumber,
+                    photoURL: user.photoURL,
+                    uid: user.uid,
+                })
+            } else {
+                // No user is signed in.
+                console.log('No user is signed in.')
+            }
+        });
+        firebase.auth().getRedirectResult().then(() => {
+            console.log('getRedirectResult')
+        });
+        class Hi {
+            constructor(name) {
+                this.name = name;
+            }
+            foo() {
+                console.log('this is foo : ', this)
+            }
+            arrow = () => {
+                console.log('arrow this :', this)
+            }
+        }
+        let _hi = new Hi();
+        console.log(_hi)
+        // _hi.foo()
+    </script>
+
+</body>
+
+</html>

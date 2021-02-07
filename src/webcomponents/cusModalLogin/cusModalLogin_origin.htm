@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModalLogin</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.1/dist/bootstrap-float-label.min.css"> -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <!-- ============ fontAwasome ============ -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+        integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <!-- firebase -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="./cusModalLogin.css">
+    <style>
+        html,
+        body {
+            background-color: black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <template>
+        <div class="modal modalLogin" id="modalLogin">
+            <div class="modal-class" role="documnet">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <input type="radio" class="radioLogin" name="headerSign"  checked>
+                        <input type="radio" class="radioSignup" name="headerSign">
+                        <input type="radio" class="radioPwdReset" name="headerSign">
+                        <span class="returnArrow pointer"><i class="fas fa-arrow-alt-circle-left"></i></span>
+                        
+                        <h2 class="headerLogin">登入</h2>
+                        <h2 class="headerSignup">註冊新帳號</h2>
+                        <h2 class="headerPwdReset">忘記密碼</h2>
+
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="radio" class="flipToLogin" name="form" checked>
+                        <input type="radio" class="flipToSignup" name="form">
+                        <input type="radio" class="flipToPwdReset" name="form">
+                        <form action="" class="formLogin">
+                            <input bindIptLoginEmail type="email" placeholder="xxxx@xxx.com" value="aaa@aaa.com" required autocomplete="username" ><span></span>
+                            <input bindIptLoginPwd type="password" pattern = "^[0-9a-zA-Z]{8,}" value="aaaaaaaa" required autocomplete="current-password"><span></span>
+                            <input bindPersistenceLogin type="checkbox" >持續保持登入
+                            <div id="divSignup" class="pointer">註冊新帳號</div>
+                            <div id="divPwdReset" class="pointer">忘記密碼</div>
+                            <button class="btnLoginEmail">使用Email登入</button>
+                            <button  type="button" class="btnLoginGoogle">使用Google帳號登入</button>
+                            
+                        </form>
+                        <form action="" class="formSignup"> 
+                            <input bindIptRegisterEmail type="email" placeholder="xxxx@xxx.com" value="aaa@aaa.com" required autocomplete="username"><span></span>
+                            <input bindIptRegisterPwd1 type="password" pattern = "^[0-9a-zA-Z]{8,}" value="aaaaaaaa" required autocomplete="new-password"><span></span>
+                            <input bindIptRegisterPwd2 type="password" pattern = "^[0-9a-zA-Z]{8,}" value="aaaaaaaa" required autocomplete="new-password"><span></span>
+                            <button class="btnRegister">註冊</button>
+                        </form>
+                        <form action="" class="formPwdReset">
+                            <input bindIptResetPwdEmail type="email" placeholder="xxxx@xxx.com" value="liting0902@gmail.com" required autocomplete="username"><span></span>
+                            <button btnResetPassword >重新發送認證碼</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    <script src="cusModalLogin.js"></script>
+    <script>$('#modalLogin').modal('show');</script>
+</body>
+
+</html>

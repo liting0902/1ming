@@ -1,1 +1,251 @@
+@charset "UTF-8";
+.inputField1 {
+  margin-left: 0.7rem;
+  padding: 0.4rem;
+}
+.inputField1 span {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.418);
+  vertical-align: middle;
+  position: relative;
+  transform: rotate(160deg);
+  margin-left: 1.3rem;
+  -webkit-transform: rotate(160deg);
+  -moz-transform: rotate(160deg);
+  -ms-transform: rotate(160deg);
+  -o-transform: rotate(160deg);
+}
+.inputField1 input {
+  font-size: 1rem;
+  color: white;
+  border: none;
+  padding: 10px;
+  height: 15px;
+  background-color: rgba(255, 255, 255, 0.212);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  border-radius: 20px;
+  letter-spacing: 0.15rem;
+}
+.inputField1 input:focus {
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.23);
+  transition: 3s;
+}
 
+@keyframes iptFocus {
+  from {
+    background-color: rgba(255, 255, 255, 0.575);
+  }
+  to {
+    background-color: rgba(255, 255, 255, 0.175);
+  }
+}
+.inputCheckValid {
+  width: 90%;
+  height: 39px;
+}
+.inputCheckValid + span {
+  position: relative;
+}
+.inputCheckValid + span::before {
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  font-size: 1rem;
+  font-weight: bold;
+  content: "";
+  color: deeppink;
+  right: 0rem;
+}
+.inputCheckValid:invalid + span::before {
+  display: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #020c16;
+  color: white;
+}
+
+.b-displayNone {
+  display: none;
+}
+
+.b-textCenter {
+  text-align: center;
+}
+
+.b-flexStart {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.b-flexCenter {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.b-ulStyleNone {
+  list-style-type: none;
+}
+
+.b-imgContainer {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+img {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.b-btnGolden {
+  display: block;
+  text-align: center;
+  background-color: transparent;
+  cursor: pointer;
+  color: #beac74;
+  border: #beac74 2px solid;
+  font-weight: bold;
+  font-size: 1.2em;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.b-btnGolden:hover {
+  color: #bbbbba;
+  background-color: #beac74;
+  transition-duration: 0.3s;
+  border-radius: 20px;
+}
+.b-btnGolden:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btnClose {
+  color: white;
+  font-size: 1.5rem;
+}
+.btnClose:hover {
+  color: #fafa97;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.boxUserProfile .modal-dialog {
+  width: 95%;
+  background-color: #04192d;
+}
+.boxUserProfile .modal-content {
+  background-color: #04192d;
+  height: 80%;
+}
+.boxUserProfile .modal-content .emailColor {
+  color: #b4ff91;
+}
+.boxUserProfile .modal-content .googleColor {
+  color: deeppink;
+}
+.boxUserProfile .modal-body .fa-exclamation-triangle {
+  color: #ffea29;
+}
+.boxUserProfile .modal-body .userID {
+  color: grey;
+}
+.boxUserProfile .modal-body .userID input {
+  background-color: transparent;
+  border: 0px solid;
+}
+.boxUserProfile .modal-body .inputField1 input {
+  width: 50%;
+}
+.boxUserProfile .modal-body .inputField1 inputinput:invalid:invalid + .fa-check-circle {
+  display: none;
+}
+.boxUserProfile .modal-body .divMessageFailed {
+  border: red 2px solid;
+  text-align: center;
+  color: white;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+.boxUserProfile .modal-body .divVerifyCode {
+  border-radius: 15px;
+}
+.boxUserProfile .modal-body .btnSave {
+  background-color: #2b8cec;
+  width: 80%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #FFF;
+  padding: 5px 20px;
+  margin: 1rem;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  margin: 1.5rem 0;
+}
+.boxUserProfile .modal-body .btnSave:hover {
+  background: #5aa5f0;
+  box-shadow: 0px 4px 35px -5px #5aa5f0;
+  cursor: pointer;
+}
+.boxUserProfile .modal-body .btnSave:focus {
+  outline: none;
+}
+.boxUserProfile .modal-body .btnLighten {
+  background-color: #2b8cec;
+  width: 80%;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: #FFF;
+  padding: 5px 20px;
+  margin: 1rem;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  border: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease-in-out;
+  display: inline;
+}
+.boxUserProfile .modal-body .btnLighten:hover {
+  background: #5aa5f0;
+  box-shadow: 0px 4px 35px -5px #5aa5f0;
+  cursor: pointer;
+}
+.boxUserProfile .modal-body .btnLighten:focus {
+  outline: none;
+}
+
+.footerHeight {
+  height: 1rem;
+}

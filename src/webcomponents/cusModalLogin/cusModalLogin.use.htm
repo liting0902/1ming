@@ -1,112 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- ============ firebase ============ -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-app.js"></script>
-    <!-- Add Firebase products that you want to use -->
-    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/7.15.2/firebase-firestore.js"></script>
-    <!-- ============ bootstrap ============ -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-    <!-- ============ fontAwasome ============ -->
-    <!-- <link rel="stylesheet" href="../../styles/fontawesome/css/fontawesome.min.css">
-    <link rel="stylesheet" href="../../styles/fontawesome/css/solid.min.css">
-    <link rel="stylesheet" href="../../styles/fontawesome/css/brands.min.css"> -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <!-- ============ sweetAlert2 ============ -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <!-- <link rel="stylesheet" href="../../template/style.css"> -->
-    <link rel="stylesheet" href="./cusModalLogin.css">
-    <style>
-        html,
-        body {
-            background-color: black;
-            color: white;
-        }
-
-        .colorBlack {
-            color: black;
-        }
-    </style>
-</head>
-
-<body>
-
-    <script type="module">
-        import cusModalLogin from './cusModalLogin.js'
-        import {useComponent} from '../../js/useComponent/useComponent2.js'
-        import {Email_ResendPassword} from '../../js/firebase/FirebaseMJS.js'
-        import firebaseConfig from '../../projectConfig/firebaseProj.config.js'
-        console.log(firebaseConfig);
-        (
-            //IIFE
-            async function(){
-                // let firebaseConfig
-                // //wait for JSON
-                // await fetch('../../projectConfig/firebaseProj.config.json')
-                // .then((res) => {
-                //     return res.json()
-                // })
-                // .then((json) => {
-                //     firebaseConfig = json
-                //     console.log("LOG: ~ file: cusModalLogin.use.htm ~ line 66 ~ .then ~ json", json)
-                // })
-
-                // keep going
-                firebase.initializeApp(firebaseConfig);
-                firebase.auth().onAuthStateChanged(function (user) {
-                    if (user) {
-                        // User is signed in.
-                        console.log('new login === ', {
-                            dispalyName: user.dispalyName,
-                            email: user.email,
-                            emailVerified:user.emailVerified,
-                            phoneNumber: user.phoneNumber,
-                            photoURL: user.photoURL,
-                            uid: user.uid,
-                        })
-                    } else {
-                        // No user is signed in.
-                        console.log('No user is signed in.')
-                    }
-                });
-                window.firebase = firebase;
-                                
-                // <cus-modal-login/> -> constructor ??
-                useComponent('cus-modal-login', './cusModalLogin.htm',cusModalLogin)
-                    .then((htmlFile) => {
-            
-                        let plugins = {
-                            Swal,
-                            Email_ResendPassword,
-                        }
-                        
-                        //class-instance APPEAR!!  you can set template now~~~
-                        let newComponent = new htmlFile.ctor(htmlFile.templateContent,plugins);
-                        document.body.appendChild(newComponent)
-
-                        newComponent.showModal(true)
-                    })
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ModalLogin</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.1/dist/bootstrap-float-label.min.css"> -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+        </script>
+        <!-- ============ fontAwasome ============ -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+            integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    
+            <!-- firebase -->
+            <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-analytics.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+        <link rel="stylesheet" href="./cusModalLogin.css">
+        <style>
+            html,
+            body {
+                background-color: black;
+    
             }
-        )()
-
+        </style>
+    </head>
+<body>
+    
+    <script>
+       
     </script>
-
-
+    <script type='module' src="./cusModalLogin.use.js">        
+    </script>
 </body>
-
 </html>
