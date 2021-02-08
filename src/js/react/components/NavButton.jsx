@@ -11,8 +11,8 @@ export default class NavButton extends Component{
     render(){
         return <div>
             {this.props.categoryName.map((data, i) => {
-                console.log(data.groupNameZTW)
-                return <button className={'b-btnGolden'}><a href={`#${data.groupName}`} key={i}>{data.groupNameZTW}</a></button>
+                console.log(data.groupNameZTW) 
+                return <button className={'b-btnGolden'} key={i}><a href={`#${data.groupName}`} >{data.groupNameZTW}</a></button>
             })}
         </div>
     }
