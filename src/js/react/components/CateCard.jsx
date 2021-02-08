@@ -5,9 +5,6 @@ import React, { Component } from 'react'
 export default class ProductCard extends Component {
     constructor(props) {
         super(props)
-        // console.log(props.name,'in Product')
-        console.log('props in cate card', props)
-
     }
     increment = (operator,index) => {
         console.log(index)

@@ -1,4 +1,4 @@
-import dataGroup from '../../firebase/productData.js';
+
 
 
 export default (state, action ) => {
@@ -7,6 +7,7 @@ export default (state, action ) => {
     if(action.type==="UPDATE_QUANTITY"){
         
         if(action.payload.operation == "+"){
+            [action.payload.index]
             return newState++
         }else{
             return newState--
