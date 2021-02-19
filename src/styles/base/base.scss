@@ -55,6 +55,7 @@ img{
 }
 
 .b-btnGolden{
+    
     display: block;
     text-align: center;
     background-color: transparent;
@@ -64,10 +65,9 @@ img{
     font-weight: bold;
     font-size: 1.2em;
     border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+    display: inline-block;
+    padding:5px;
+    margin: 1rem 2rem;
     &:hover{
         color: $colorWhite;
         background-color: $colorGold;

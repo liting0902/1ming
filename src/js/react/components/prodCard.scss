@@ -1,35 +1,70 @@
 @use '../../../styles/base/base.scss';
-html,body{
+
+// *,
+// *::before,
+// *::after {
+//     box-sizing: border-box;
+// }
+
+html,
+body {
     background-color: black;
-    color:white;
+    color: white;
 }
+.navBtn{
+    a{
+        color:white;
+    }
+}
+
 .prodCard {
-    position: relative;
-    border: deeppink 2px solid;
-    width: 80%;
-    
-    
-    .cateName { 
-        color: yellow;
-        display: block;
-        display: flex;
-        justify-content: center;
-        
+    // position: relative;
+    border: yellow 2px solid;
+    width: 100%;
+
+
+    .cateName {
+        color: gold;
+        text-align: center;
+        border: cadetblue 1px solid;
+
     }
+
     .groupProd {
+        margin: 5px;
+        background-color: rgba(126, 126, 126, 0.315);
         display: inline-block;
-        border:lime 2px solid;
-        width:200px;
-        height:30%;
-        li{
-            list-style-type: none;
+        border: lime 2px solid;
+        border-radius: 5px;
+        margin: 1rem;
+        width: 15rem;
+        height: 19rem;
+        text-align: center;
+
+        // li{
+        //     list-style-type: none;
+        // }
+        span {
+            padding: 0.5rem;
         }
-        .prodImg {
-            width: 150px;
+
+        .thumbnail {
+            border: blue 1px solid;
+            width: 90%;
+            height: 55%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            //position: relative;
+            margin: 0.5rem; // go center
+            background-color: rgba(255, 255, 255, 0.274);
+            border-radius: 5px;
+
+            img {
+                border-radius: 5px;
+            }
         }
     }
-    
+
 
 }
-
-

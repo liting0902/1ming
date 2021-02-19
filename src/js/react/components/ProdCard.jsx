@@ -21,8 +21,10 @@ class ProdCard extends Component {
             return (<div className={'prodCard'}  key={i}>
                 <h2 className={'cateName'} id={data.groupName}> {data.groupNameZTW}</h2>
                 <div >
-                    <CateCard arrGroupItem={data.arrGroupItem}></CateCard>
+                <CateCard arrGroupItem={data.arrGroupItem}></CateCard>
                 </div>
+                
+                
             </div>)
         })
 
