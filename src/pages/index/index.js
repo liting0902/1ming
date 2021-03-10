@@ -27,15 +27,6 @@ firebase.initializeApp(firebaseConfig);
 window.firebase = firebase;
 
 
-// const authPromise=()=>{
-//         const user = firebase.auth().currentUser;
-//         console.log("LOG: ~ file: index.js ~ line 32 ~ authPromise ~ user", user)
-//         return user
-   
-// }
-// setTimeout(authPromise,1000)
-
-
 window.Swal = Swal;
 
 let aUserLogin = document.querySelector('#aUserLogin');
@@ -45,12 +36,6 @@ let aMyOrder = document.querySelector('#aMyOrder');
 let aMyProfile = document.querySelector('#aMyProfile');
 let aLogout = document.querySelector('#aLogout');
 
-// let navLink = document.querySelectorAll('.nav-link')
-// navLink.addEventListener('click',(e) => {
-//     console.log(777777777777777777777777777)
-//     // collapseMenuBtn.click();
-//     $('#divMenu').collapse('hide');
-//   })
 
 useComponent('cus-full-page-scroll', '../../webcomponents/cusFullPageScroll/fullPageScroll.htm', cusFullPageScroll)
     .then((htmlTemplate) => {
@@ -75,7 +60,6 @@ useComponent('cus-full-page-scroll', '../../webcomponents/cusFullPageScroll/full
         let userProfileTemplate = new userProfile.ctor(userProfile.templateContent);
         document.body.appendChild(userProfileTemplate);
         console.log('append UserProfile')
-        // userProfileTemplate.iDisplay(getProviderID, user.phoneNumber, user.emailVerified);
         
     })
     }
@@ -100,10 +84,14 @@ let setAuth_getRedirectResult = () => {
 aMyProfile.addEventListener('click',() => {    
     $("#modalProfile").modal('show')
 });
+let uid;
+
 let onAuthStateChanged = () => {
     firebase.auth().onAuthStateChanged((user) => {
         let nameDisplay;
         if (user) {
+            window.uid = user.uid
+            uid=window.uid
             nameDisplay = user.email;
             aUserLogin.classList.add('d-none');
             liUserDropdown.classList.remove('d-none')
@@ -121,7 +109,7 @@ let onAuthStateChanged = () => {
             photoURL: user.photoURL,
             uid: user.uid,
         }) : console.log('No user is signed in.')
-
+        
     })
 }
 onAuthStateChanged();

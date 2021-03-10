@@ -1,0 +1,17 @@
+@use '../../../styles/base/base.scss';
+.orderMain {
+    position:relative;
+    // display: flex;
+    // justify-content: space-around;
+    // justify-content: space-between;
+    .productListMain {
+        margin: 5% 30% 5% 2%;
+        padding: 1rem;
+        border: 1px rgb(225, 0, 255) solid;
+        width: 80%;
+
+        
+    }
+
+    
+}

@@ -1,0 +1,18 @@
+.productHeader {
+  border: #62dfc4 2px solid;
+  display: flex;
+  justify-content: space-around;
+}
+
+.navBtn {
+  display: inline-block;
+  font-size: 1.5rem;
+  border-bottom: whitesmoke 2px solid;
+}
+.navBtn a {
+  color: rgba(255, 255, 255, 0.678);
+  text-decoration: none;
+}
+.navBtn a :hover {
+  color: white;
+}

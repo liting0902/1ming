@@ -1,7 +1,6 @@
 'use strict';
-
-
-
+import { accountConverter, userAccount } from '../../js/firebase/userInfoConvertor.js'
+import {getUserProfile} from '../../js/firebase/getUserProfile.js'
 import updateUserProfile from '../../js/firebase/updateUserProfile.js';
 
 class ProxyFormData {
@@ -15,50 +14,11 @@ class ProxyFormData {
     iptPhone = ""
     /**@prop {string} */
     iptAddress = ""
-    /**@type {import('../../js/dataDefine/index.js').UserData} */
-    userData = null//{}
-    static userProfileConverter = {
-        toFirestore: function (/**@type {ProxyFormData} */ proxyFormData) {
-            return {
-                // only write back key-userProfile
-                account: {
-                    //sendEmail: proxyFormData.iptEmail,
-                    name: proxyFormData.iptName,
-                    //phoneNumber: proxyFormData.iptPhone,
-                    address: proxyFormData.iptAddress,
-                    // address1: proxyFormData.iptAddress1,
-                    // address2: proxyFormData.iptAddress2,
-                    // address3: proxyFormData.iptAddress3,
-                    //selectAddress: proxyFormData.selectAddress,
-                }
-            }
-        },
-        fromFirestore: function (/**@type {any}} */snapshot, /**@type {any}}*/options) {
-            
-            const data = snapshot.data(options);
-            
-            let proxyFormData = new ProxyFormData();
-            proxyFormData.userData = Object.assign(new UserData(),data)
-            //load email + phone + userProfile
-            proxyFormData.iptEmail = data.email;
-            proxyFormData.iptPhone = defaultValue.iptPhone
-            if (data.phoneNumber)
-                proxyFormData.iptPhone = data.phoneNumber;
-            if (data.account) {
-                //proxyFormData.iptEmail = data.userProfile.sendEmail
-                proxyFormData.iptName = data.account.name
-                //proxyFormData.iptPhone = data.userProfile.phoneNumber
-                proxyFormData.iptAddress = data.account.address
-                // proxyFormData.iptAddress1 = data.userProfile.address1
-                // proxyFormData.iptAddress2 = data.userProfile.address2
-                // proxyFormData.iptAddress3 = data.userProfile.address3
-                // proxyFormData.selectAddress = data.userProfile.selectAddress
-            }
+    
 
-            return proxyFormData
-        }
-    }
 }
+/**@param {Date} dateRegistered*/
+let  dateRegistered ;
 
 
 
@@ -68,7 +28,7 @@ export default class cusModalUserProfile extends HTMLElement {
         this.getUser();
         this.appendTemplate(templateContent);
     }
-    
+
 
     appendTemplate = (templateContent) => {
 
@@ -122,8 +82,8 @@ export default class cusModalUserProfile extends HTMLElement {
                 const credential = firebase.auth.PhoneAuthProvider.credential(window.confirmationResult.verificationId, code)
                 console.log(typeof credential)
                 console.log(firebase.auth().currentUser.phoneNumber)
-                let user = firebase.auth().currentUser.phoneNumber;
-                let phone = user.phoneNumber;
+                let phone = firebase.auth().currentUser.phoneNumber;
+
                 if (phone) {
                     Swal.fire({
                         text: '認證成功',
@@ -186,22 +146,23 @@ export default class cusModalUserProfile extends HTMLElement {
         let iptAddress = this.querySelector('#iptAddress');
 
         btnSaveProfile.addEventListener('click', () => {
-            
+
             let address = iptAddress.value;
             let name = iptName.value;
             let uid = iptAccount.value;
+            let email = iptEmail.value;
             let phone = firebase.auth().currentUser.phoneNumber;
-            console.log(uid,name, address)
-            updateUserProfile(uid,name, address,phone);
+            console.log(uid, name, address)
+            updateUserProfile(uid, email, phone, dateRegistered, name, address);
             // firebase.firestore().collection('account').doc(uid)..set()
             // .then((/**@type {any}*/e) => {
             //     let userInfo = e.data();
             //     console.log("LOG: ~ file: cusModalUserProfile.js ~ line 201 ~ cusModalUserProfile ~ .then ~ userInfo", userInfo)
-                
+
             //     // iptName = userInfo.iptName
             //     // iptAddress = userInfo.iptAddress
-                
- 
+
+
             // })
         })
         let btnResendPassword = this.querySelector('#btnResendPassword');
@@ -231,30 +192,18 @@ export default class cusModalUserProfile extends HTMLElement {
     };
 
     getUser = async () => {
-        await firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                iptEmail.value = user.email;
-                iptPhone.value = user.phoneNumber;
-                iptAccount.value = user.uid;
-
-                let getProviderID = this.ProviderID(user.providerData)
-                console.log('Provider ID : ', getProviderID)
-                this.iDisplay(getProviderID, user.phoneNumber, user.emailVerified);
-
-                console.log('current user === ', {
-                    dispalyName: user.dispalyName,
-                    email: user.email,
-                    emailVerified: user.emailVerified,
-                    phoneNumber: user.phoneNumber,
-                    photoURL: user.photoURL,
-                    uid: user.uid,
-                    providerData: user.providerData,
-                })
-            } else {
-                console.log('No user is signed in.')
-            }
-            return user
-        })
+        // let _uid = iptAccount.value
+        const accountSnap = await getUserProfile(uid);
+        const account = accountSnap.data();
+        if (account !== undefined) {
+            console.log(account)
+                iptEmail.value = account.email;
+                iptPhone.value = account.phone;
+                iptAccount.value = account.uid;
+                iptName.value = account.name;
+                dateRegistered = account.dateRegistered;
+        }
+        
     }
 
     /**

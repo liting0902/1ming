@@ -1,17 +1,19 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-// import Product from '../../js/react/containsers/ProductList.jsx'
-import ProductLits from '../../js/react/containsers/ProductList.jsx'
+import ReactDOM from 'react-dom';
+import App from '../../js/react/containsers/App.jsx'
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {createStore , applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+
 import rootReducer from '../../js/react/reducers/rootReducer.js'
 
-const store =createStore(rootReducer);
+const store =createStore(rootReducer, applyMiddleware(thunk));
+
 
 let divRoot = document.querySelector("#root");
 
 ReactDOM.render(
     <Provider store={store}>
-        <ProductLits></ProductLits>
+        <App></App>
     </Provider>
     , divRoot); 

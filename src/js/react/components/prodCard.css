@@ -1,102 +1,11 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html, body {
-  background-color: #020c16;
-  color: white;
-}
-
-.b-displayNone {
-  display: none;
-}
-
-.b-textCenter {
-  text-align: center;
-}
-
-.b-flexStart {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  margin: 5px;
-}
-
-.b-flexCenter {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.b-ulStyleNone {
-  list-style-type: none;
-}
-
-.b-imgContainer {
-  width: 200px;
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
-
-img {
-  max-width: 90%;
-  max-height: 90%;
-}
-
-.b-btnGolden {
-  display: block;
-  text-align: center;
-  background-color: transparent;
-  cursor: pointer;
-  color: #beac74;
-  border: #beac74 2px solid;
-  font-weight: bold;
-  font-size: 1.2em;
-  border-radius: 20px;
-  display: inline-block;
-  padding: 5px;
-  margin: 1rem 2rem;
-}
-.b-btnGolden:hover {
-  color: #bbbbba;
-  background-color: #beac74;
-  transition-duration: 0.3s;
-  border-radius: 20px;
-}
-.b-btnGolden:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.btnClose {
-  color: white;
-  font-size: 1.5rem;
-}
-.btnClose:hover {
-  color: #fafa97;
-}
-
-.pointer {
-  cursor: pointer;
-}
-
 html,
 body {
   background-color: black;
   color: white;
 }
 
-.navBtn a {
-  color: white;
-}
-
 .prodCard {
-  border: yellow 2px solid;
+  border: #c0ffc0 2px solid;
   width: 100%;
 }
 .prodCard .cateName {

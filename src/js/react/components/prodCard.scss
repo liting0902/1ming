@@ -1,25 +1,15 @@
-@use '../../../styles/base/base.scss';
 
-// *,
-// *::before,
-// *::after {
-//     box-sizing: border-box;
-// }
 
 html,
 body {
     background-color: black;
     color: white;
 }
-.navBtn{
-    a{
-        color:white;
-    }
-}
+
 
 .prodCard {
     // position: relative;
-    border: yellow 2px solid;
+    border: rgb(192, 255, 192) 2px solid;
     width: 100%;
 
 
@@ -55,7 +45,6 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            //position: relative;
             margin: 0.5rem; // go center
             background-color: rgba(255, 255, 255, 0.274);
             border-radius: 5px;

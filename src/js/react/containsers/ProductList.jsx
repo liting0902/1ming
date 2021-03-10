@@ -1,25 +1,29 @@
-import React ,{Component} from 'react'
-import ProdCard from '../components/ProdCard.jsx';
+import React, { Component } from 'react'
+import CategoryCard from '../components/CategoryCard.jsx';
 import NavButton from '../components/NavButton.jsx'
 // let products = require('../../../../adminData/products.json') ;
 import dataGroup from '../../firebase/productData.js';
-import './ProductList.css'
+import './orderPage.css'
+
 
 let _ = require('lodash')
 
-export default class ProductList extends Component{
-    constructor(props){
-        super();    
+export default class ProductList extends Component {
+    constructor(props) {
+        super();
     }
-    render(){
+    render() {
 
-        return <div className={'productListMain'}>
-            <div className={''}>
-            <h2>產品菜單</h2>
-        <NavButton categoryName = {dataGroup}></NavButton>
+        return <React.Fragment>
+            <div className={'productListMain'}>
+                {/* <div className={'productHeader'}> */}
+                    <NavButton categoryName={dataGroup}></NavButton>
+                {/* </div> */}
+                {/* <CategoryCard productList={dataGroup}></CategoryCard> */}
+                <CategoryCard ></CategoryCard>
+
             </div>
-            
-        <ProdCard productList={dataGroup}></ProdCard>
-        </div>
+        </React.Fragment>
+
     }
 }

@@ -1,0 +1,19 @@
+.productHeader{
+    border:rgb(98, 223, 196) 2px solid;
+    // padding: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+.navBtn{
+    display: inline-block;
+    font-size: 1.5rem;
+    border-bottom: rgb(245, 245, 245) 2px solid;
+    a{
+        color: rgba(255, 255, 255, 0.678);
+        text-decoration: none;
+        :hover{
+            color:white;
+        }
+    }
+    
+}
