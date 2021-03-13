@@ -28,7 +28,7 @@ class ProductCard extends Component {
                         <h6>{item.name}</h6>
                         <h6 className={"prodPrice"}>${item.price}</h6>
                     
-                        <button className={'btn btn-dark'} onClick={(e) => { this.addItem(name, price) }}>加入購物車</button>
+                        <button className={'btn btn-dark'} onClick={(e) => { this.addItem(name, price) }}><i className="fas fa-cart-arrow-down"></i>加入購物車</button>
                     </div>
                 
                 </div>

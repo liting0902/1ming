@@ -10,7 +10,6 @@ import './orderInfo.css'
 class OrderInfo extends Component {
     constructor(props) {
         super(props);
-        console.log('in constructor ', props.orderInfo)
     }
     showOrderInfo() {
         this.props.getOrderInfo(uid)
@@ -25,18 +24,20 @@ class OrderInfo extends Component {
         },
         {
             dataField: 'date',
-            text: '訂單成立時間'
+            text: '訂單成立時間',
+            sort: true
         },
         {
             dataField: 'summary',
-            text: '總金額'
+            text: '總金額',
+            sort: true
         }];
         const expandRow = {
 
             renderer: row => {
                 console.log(row)
-                let orderDetail = row.orderItem.map((element) => {
-                    return <h5>{element.name} -- 數量:{element.quantity} -- 單價:{element.price}</h5>
+                let orderDetail = row.orderItem.map((element, i) => {
+                    return <h5 key={i} className={'orderDetailExpanded'}>{element.name} -- 數量:{element.quantity} -- 單價:{element.price}</h5>
                 })
                 return <div>
                     {orderDetail}
@@ -45,32 +46,37 @@ class OrderInfo extends Component {
             showExpandColumn: true,
             expandHeaderColumnRenderer: ({ isAnyExpands }) => {
                 if (isAnyExpands) {
-                    return <b>-</b>;
+                    return <b className="expandedHeaderColor"><i className="fas fa-angle-double-down"></i></b>;
                 }
-                return <b>+</b>;
+                return <b><i className="fas fa-angle-double-right"></i></b>;
             },
             expandColumnRenderer: ({ expanded }) => {
                 if (expanded) {
                     return (
-                        <b>-</b>
+                        <b className="expandedColor"><i className="fas fa-angle-down"></i></b>
                     );
                 }
                 return (
-                    <b>...</b>
+                    <b><i className="fas fa-angle-right"></i></b>
                 );
             }
         };
-        let btTable = <BootstrapTable
+        const defaultSorted = [{
+            dataField: 'name',
+            order: 'desc'
+        }];
+        let bootstrapTable = <BootstrapTable
             keyField='id'
             data={tableData}
             columns={columns}
             expandRow={expandRow}
+            defaultSortDirection="asc"
         />
 
 
         return <div className="orderInfoMain">
             <button onClick={() => { this.showOrderInfo() }}><h1>所有訂單</h1></button>
-            {btTable}
+            {bootstrapTable}
 
         </div>
     }

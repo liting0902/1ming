@@ -1,6 +1,39 @@
 .orderInfoMain {
   margin: 3%;
-  border: burlywood 2px solid;
+  border: #c4de87 2px solid;
   width: 90vw;
   height: 100vh;
+  color: white;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered {
+  color: white;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered .expand-cell-header {
+  width: 2rem;
+  color: #00d9ff;
+  font-weight: 400;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered .expand-cell-header th[tabindex="0"] {
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered .react-bootstrap-table-sort-order {
+  color: white;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered .expand-cell {
+  width: 2rem;
+  color: #65e765;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered .expandedHeaderColor {
+  color: #fd83c4;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered .expandedColor {
+  color: deeppink;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered .expand-cell td {
+  background-color: yellow;
+}
+.orderInfoMain .react-bootstrap-table .orderDetailExpanded {
+  color: white;
 }

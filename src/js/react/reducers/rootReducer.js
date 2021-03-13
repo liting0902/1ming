@@ -3,9 +3,6 @@ import {combineReducers} from 'redux';
 import productListReducer from './productListReducer';
 import addShopCartReducer from './addShopCartReducer';
 import getOrderInfoReducer from './getOrderInfoReducer';
-console.log("LOG: ~ file: rootReducer.js ~ line 6 ~ getOrderInfoReducer", getOrderInfoReducer)
-
-
 
 const rootReducer = combineReducers({
 /**

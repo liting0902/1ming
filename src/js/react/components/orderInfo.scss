@@ -1,8 +1,45 @@
 .orderInfoMain{
     margin: 3% ;
-    border: burlywood 2px solid;
+    border: rgb(196, 222, 135) 2px solid;
     width:90vw;
     height:100vh;
     color:white;
-    background-color: #fff;
+    .react-bootstrap-table{
+       
+        .table-bordered{
+            color: white;
+            .expand-cell-header{
+                width:2rem;
+                color:rgb(0, 217, 255);
+                font-weight: 400;
+                th[tabindex='0']{
+                    font-weight: 700;
+                    font-size: 2rem;
+                    text-align: center;;
+                }
+                
+            }
+            .react-bootstrap-table-sort-order{
+                color:white
+            }
+            .expand-cell{
+                width:2rem;
+                color:rgb(101, 231, 101);
+            }
+            .expandedHeaderColor{color:rgb(253, 131, 196)}
+            .expandedColor{
+                color:deeppink;
+                
+            }
+            .expand-cell td{
+                background-color: yellow;
+            }
+
+        }
+        .orderDetailExpanded{
+            color:white;
+        }
+
+    }
+    
 }

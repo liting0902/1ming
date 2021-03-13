@@ -16,8 +16,17 @@ function orderID(uid) {
  * @param {Array} orderItemList order-item-list 
  */
 export const updateOrder = (uid, summary, orderItemList) => {
-    let d = new Date();
-    let strDate = d.toString();
+    let date = new Date();
+    let y = date.getFullYear();
+    let m = date.getMonth()+1;
+    // let month = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月',];
+    // let m_zh = month[m-1];
+    let d = date.getDate();
+    let h = date.getHours()+1;
+    let min = date.getMinutes()+1;
+    let strDate = `${y}/ ${m}/ ${d}  ${h}:${min}`
+    console.log("LOG: ~ file: updateOrder.js ~ line 26 ~ updateOrder ~ strDate", strDate)
+    // .replace('GMT+0800 (台北標準時間)' , '');
     let _orderID = orderID(uid)
     let orderData = {
         uid,

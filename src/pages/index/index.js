@@ -6,10 +6,10 @@ import {
     firebase
 } from '@firebase/app';
 // var firebase = require('firebase/app');
-import 'firebase/auth';
+require('firebase/auth');
 import 'firebase/firestore';
 
-import {useComponent} from '../../js/useComponent/useComponent.js';
+import { useComponent } from '../../js/useComponent/useComponent.js';
 
 import './index.css';
 import '../../webcomponents/cusFullPageScroll/fullPageScroll.css';
@@ -22,9 +22,11 @@ import cusModalUserProfile from '../../webcomponents/cusModalUserProfile/cusModa
 import signOut from '../../js/firebase/signOut.js';
 
 var firebaseConfig = require('../../projectConfig/firebaseProj.config.json');
-
 firebase.initializeApp(firebaseConfig);
+firebase.auth().useDeviceLanguage();
 window.firebase = firebase;
+console.log(screen.width)
+console.log(window.screen)
 
 
 window.Swal = Swal;
@@ -35,34 +37,57 @@ let spanDisplayEmail = document.querySelector('#spanDisplayEmail');
 let aMyOrder = document.querySelector('#aMyOrder');
 let aMyProfile = document.querySelector('#aMyProfile');
 let aLogout = document.querySelector('#aLogout');
+let aOrderPage = document.querySelector('#aOrderPage');
+let pageStatic = document.querySelector('#pageStatic')
+let pageReact = document.querySelector('#pageReact')
+console.log(window.pushUrl)
+aMyOrder.addEventListener('click', () => {
+    console.log('my order click')
+    window.history.pushState(null, null, 'orderSummary');
+    // window.pushUrl('/orderSummary#')
+    // console.log(window.pushUrl('/orderSummary'))
+    pageStatic.classList.add("d-none")
+})
+aOrderPage.addEventListener('click', () => {
+    console.log('go order')
+    // window.pushUrl('/orderPage')
+    window.history.pushState(null, null, 'orderPage');
+    pageStatic.classList.add("d-none")
+    // body.removeChild()
+    // appendFullPage.hidden=true
+    // console.log("LOG: ~ file: index.js ~ line 57 ~ aOrderPage.addEventListener ~ appendFullPage.hidden", appendFullPage.hidden)
+    // console.log()
+})
 
 
+let appendFullPage;
 useComponent('cus-full-page-scroll', '../../webcomponents/cusFullPageScroll/fullPageScroll.htm', cusFullPageScroll)
     .then((htmlTemplate) => {
         let fullPageTemplate = new htmlTemplate.ctor(htmlTemplate.templateContent);
         console.log('append FullPageScroll')
-        document.body.appendChild(fullPageTemplate);
+        appendFullPage = fullPageTemplate;
+        pageStatic.appendChild(fullPageTemplate);
     })
-    let appendModalLogin = () => {
-        useComponent('cus-modal-login', '../../webcomponents/cusModalLogin/cusModalLogin.htm', cusModalLogin)
-    .then((loginModal) => {
-        let loginTemplate = new loginModal.ctor(loginModal.templateContent);
-        document.body.appendChild(loginTemplate);
-        console.log('append ModalLogin')
+let appendModalLogin = () => {
+    useComponent('cus-modal-login', '../../webcomponents/cusModalLogin/cusModalLogin.htm', cusModalLogin)
+        .then((loginModal) => {
+            let loginTemplate = new loginModal.ctor(loginModal.templateContent);
+            document.body.appendChild(loginTemplate);
+            console.log('append ModalLogin')
 
-    })
-    }
+        })
+}
 
-    let appendUserProfile = () => {
-        useComponent('cus-user-profile', '../../webcomponents/cusModalUserProfile/cusModalUserProfile.htm', cusModalUserProfile)
-    .then((userProfile) => { 
-        
-        let userProfileTemplate = new userProfile.ctor(userProfile.templateContent);
-        document.body.appendChild(userProfileTemplate);
-        console.log('append UserProfile')
-        
-    })
-    }
+let appendUserProfile = () => {
+    useComponent('cus-user-profile', '../../webcomponents/cusModalUserProfile/cusModalUserProfile.htm', cusModalUserProfile)
+        .then((userProfile) => {
+
+            let userProfileTemplate = new userProfile.ctor(userProfile.templateContent);
+            document.body.appendChild(userProfileTemplate);
+            console.log('append UserProfile')
+
+        })
+}
 
 
 
@@ -81,24 +106,23 @@ let setAuth_getRedirectResult = () => {
         console.log(`Get redirect result: code/${errorCode}, message/${errorMessage}`)
     });
 };
-aMyProfile.addEventListener('click',() => {    
+aMyProfile.addEventListener('click', () => {
     $("#modalProfile").modal('show')
 });
 let uid;
-
 let onAuthStateChanged = () => {
     firebase.auth().onAuthStateChanged((user) => {
         let nameDisplay;
         if (user) {
             window.uid = user.uid
-            uid=window.uid
+            uid = window.uid
             nameDisplay = user.email;
             aUserLogin.classList.add('d-none');
             liUserDropdown.classList.remove('d-none')
             spanDisplayEmail.innerHTML = ` ${nameDisplay} 登入中`;
             appendUserProfile();
-            
-        }else{
+
+        } else {
             appendModalLogin();
         }
         user ? console.log('new login === ', {
@@ -109,12 +133,12 @@ let onAuthStateChanged = () => {
             photoURL: user.photoURL,
             uid: user.uid,
         }) : console.log('No user is signed in.')
-        
+
     })
 }
 onAuthStateChanged();
 
 aLogout.addEventListener('click', () => {
     signOut();
-    
+
 })
