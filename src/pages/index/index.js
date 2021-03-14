@@ -39,28 +39,48 @@ let aMyProfile = document.querySelector('#aMyProfile');
 let aLogout = document.querySelector('#aLogout');
 let aOrderPage = document.querySelector('#aOrderPage');
 let pageStatic = document.querySelector('#pageStatic')
-let pageReact = document.querySelector('#pageReact')
-console.log(window.pushUrl)
+let pageReact = document.querySelector('#pageReact');
+let orderPage = document.querySelector('#orderPage');
+let orderSummary = document.querySelector('#orderSummary');
+
+let [...scrollElement] = document.querySelectorAll('a[stactic-page]')
+console.log("LOG: ~ file: index.js ~ line 45 ~ scrollElement", scrollElement)
+scrollElement.map((e) => {
+    e.addEventListener('click', () => {
+        console.log('news ----------------------------')
+        appendFullPage.hidden=false
+        orderPage.classList.add("d-none")
+        orderSummary.classList.add("d-none")
+    })
+})
+
+console.log(window.history.replaceState)
 aMyOrder.addEventListener('click', () => {
-    console.log('my order click')
-    window.history.pushState(null, null, 'orderSummary');
+    console.log('my order click',orderSummary)
+    // window.history.replaceState(null,null,'orderSummary')
+    // window.history.pushState(null, null, 'orderSummary/');
     // window.pushUrl('/orderSummary#')
     // console.log(window.pushUrl('/orderSummary'))
-    pageStatic.classList.add("d-none")
+    // pageStatic.classList.add("d-none")
+    appendFullPage.hidden=true
+    orderSummary.classList.remove("d-none")
+    orderPage.classList.add("d-none")
 })
 aOrderPage.addEventListener('click', () => {
-    console.log('go order')
+    console.log('go order',orderPage)
     // window.pushUrl('/orderPage')
-    window.history.pushState(null, null, 'orderPage');
-    pageStatic.classList.add("d-none")
+    // window.history.pushState(null, null, 'orderPage');
+    orderPage.classList.remove("d-none")
+    orderSummary.classList.add("d-none")
+    // pageStatic.classList.add("d-none")
     // body.removeChild()
-    // appendFullPage.hidden=true
+    appendFullPage.hidden=true
     // console.log("LOG: ~ file: index.js ~ line 57 ~ aOrderPage.addEventListener ~ appendFullPage.hidden", appendFullPage.hidden)
     // console.log()
 })
 
 
-let appendFullPage;
+let appendFullPage
 useComponent('cus-full-page-scroll', '../../webcomponents/cusFullPageScroll/fullPageScroll.htm', cusFullPageScroll)
     .then((htmlTemplate) => {
         let fullPageTemplate = new htmlTemplate.ctor(htmlTemplate.templateContent);
