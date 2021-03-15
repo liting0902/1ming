@@ -9,27 +9,22 @@ import {
 require('firebase/auth');
 import 'firebase/firestore';
 
-import { useComponent } from '../../js/useComponent/useComponent.js';
-
+import { useComponent } from '../../js/useComponent/useComponent.js'; // webComponent API
+//webComponent css
 import './index.css';
 import '../../webcomponents/cusFullPageScroll/fullPageScroll.css';
 import '../../webcomponents/cusModalLogin/cusModalLogin.css';
 import '../../webcomponents/cusModalUserProfile/cusModalUserProfile.css';
-
+//webComponent JS
 import cusFullPageScroll from '../../webcomponents/cusFullPageScroll/fullPageScroll.js';
 import cusModalLogin from '../../webcomponents/cusModalLogin/cusModalLogin.js';
 import cusModalUserProfile from '../../webcomponents/cusModalUserProfile/cusModalUserProfile.js';
 import signOut from '../../js/firebase/signOut.js';
-
+//firebase intialized config
 var firebaseConfig = require('../../projectConfig/firebaseProj.config.json');
 firebase.initializeApp(firebaseConfig);
 firebase.auth().useDeviceLanguage();
 window.firebase = firebase;
-console.log(screen.width)
-console.log(window.screen)
-
-
-window.Swal = Swal;
 
 let aUserLogin = document.querySelector('#aUserLogin');
 let liUserDropdown = document.querySelector('#liUserDropdown');
@@ -44,7 +39,7 @@ let orderPage = document.querySelector('#orderPage');
 let orderSummary = document.querySelector('#orderSummary');
 
 let [...scrollElement] = document.querySelectorAll('a[stactic-page]')
-console.log("LOG: ~ file: index.js ~ line 45 ~ scrollElement", scrollElement)
+
 scrollElement.map((e) => {
     e.addEventListener('click', () => {
         console.log('news ----------------------------')
@@ -54,7 +49,6 @@ scrollElement.map((e) => {
     })
 })
 
-console.log(window.history.replaceState)
 aMyOrder.addEventListener('click', () => {
     console.log('my order click',orderSummary)
     // window.history.replaceState(null,null,'orderSummary')

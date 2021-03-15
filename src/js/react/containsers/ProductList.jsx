@@ -15,10 +15,11 @@ export default class ProductList extends Component {
     render() {
 
         return <React.Fragment>
-            <div className={'productListMain'}>
-                {/* <div className={'productHeader'}> */}
+            <div className={'productHeader'}>
                     <NavButton categoryName={dataGroup}></NavButton>
-                {/* </div> */}
+                </div>
+            <div className={'productListMain'}>
+                
                 {/* <CategoryCard productList={dataGroup}></CategoryCard> */}
                 <CategoryCard ></CategoryCard>
 

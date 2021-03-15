@@ -29,23 +29,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     
     <style>
-        .fa-shopping-cart[item-count]:after {
-            position: relative;
-            right: 6px;
-            top: -12px;
-            content: attr(item-count);
-            font-size: 50%;
-            padding: .5em;
-            border-radius: 50%;
-            line-height: .75em;
-            color: white;
-            background: rgba(255, 0, 0, .85);
-            text-align: center;
-            display: inline-block;
-            min-width: 2em;
-            min-height: 2em;
-            font-weight: bold;
-        }
 
         .disappear{
             display:none;
@@ -67,15 +50,15 @@
         <button id="collapseMenuBtn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#divMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="d-lg-none">
+        <!-- <div class="d-lg-none">
             <a href="#" class="aOpenModalShopcart" class="navbar-brand mx-auto text-center">
                 <span class="fa-stack">
-                    <i class="fas fa-shopping-cart" data-count="99"></i>
+                    <i class="fas fa-shopping-cart" data-count="11"></i>
                     <span class="numberBadge nbg1" data-testid="spanNumberBadge1">99</span>
                 </span>
             </a>
             
-        </div>
+        </div> -->
 
 
         <div class="collapse navbar-collapse" id="divMenu">
@@ -114,16 +97,12 @@
                         <a class="dropdown-item" id="aLogout" href="#">登出</a>
                     </div>
                 </li>
-                <li class="nav-item ">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-shopping-cart" data-count="99">購物車</i>
-                        <span class="numberBadge nbg2">99</span>
-                    </a>
-                </li>
             </ul>
         </div>
+        <span class="nav-link" id="aShopCart"></span>
+        
     </nav>
-    <div id='pageStatic' class=""></div>
+    <div id='pageStatic' ></div>
     <div id="pageReact" >
         <div id="orderPage" class="d-none"></div>
         <div id="orderSummary" class="d-none"></div>

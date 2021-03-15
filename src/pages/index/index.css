@@ -56,7 +56,7 @@ img {
   color: #beac74;
   border: #beac74 2px solid;
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 0.5rem;
   border-radius: 20px;
   display: inline-block;
   padding: 5px;
@@ -85,6 +85,10 @@ img {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+}
+
 *,
 *::before,
 *::after {
@@ -110,7 +114,7 @@ html, body {
 }
 
 #liUserDropdown #spanDisplayEmail, #liUserDropdown .fa-user {
-  color: #aca220;
+  color: #ac2099;
   font-weight: bold;
 }
 #liUserDropdown .dropdown-menu {

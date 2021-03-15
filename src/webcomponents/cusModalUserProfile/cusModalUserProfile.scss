@@ -19,7 +19,7 @@ $bg4:#17A080;
     }
     .modal-content{
         background-color:$bg2; 
-        height:80%;
+        height:42rem;
         .emailColor{
             color:base.$colorEmailIcon;
         }
@@ -28,22 +28,10 @@ $bg4:#17A080;
         }
     }
     .modal-body{
-    
-        // border:yellow 2px solid;
-        
+
         .fa-exclamation-triangle{
             color:rgb(255, 234, 41)
         }
-        // .uiCkbox-emailVerified:checked~{
-            // & .inputField1 .emailWarning,.emailWarning{
-                // display: none;
-            // }        
-        // }
-        // .uiCkbox-isAccountOfGoogle{
-        //     &:checked~ #btnResendPassword{
-                // display: none;
-            // }        
-        // }
         .userID{
             color:grey; 
             input{
@@ -74,7 +62,7 @@ $bg4:#17A080;
         // width: 30%;
         // border: gold 2px solid;
         border-radius: 15px;
-      
+    
     }
     .btnSave{
         @include buttonGlory.getSigninButton(lighten($royalblue, 50%), 80%);

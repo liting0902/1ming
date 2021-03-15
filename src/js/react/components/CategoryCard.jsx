@@ -18,10 +18,11 @@ class CategoryCard extends Component {
     render() {
         const productGroup = this.productData.map((data, i) => {
             return (<div className={'prodCard'}  key={i}>
-                <h2 className={'cateName'} id={data.groupName}> {data.groupNameZTW}</h2>
+                <h3 className={'cateName'} id={data.groupName}> {data.groupNameZTW}</h3>
                 <div >
                 <ProductCard categoryId={i} arrGroupItem={data.arrGroupItem}></ProductCard>
                 </div>
+                <hr></hr>
             </div>)
         })
 

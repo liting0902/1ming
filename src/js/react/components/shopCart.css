@@ -1,28 +1,7 @@
-.cartBody {
-  right: 5px;
-  top: 0;
-  position: fixed;
-  margin: 5% 2.5% 5% 2.5%;
-  width: 25%;
-  max-height: 90%;
-  border: rgba(184, 184, 184, 0.699) 2px solid;
-  border-radius: 5px;
-  overflow-y: scroll;
-}
-.cartBody .shopCartItem {
+.shopCartItem {
   position: relative;
   border: cadetblue 1px solid;
   padding: 0.3rem;
-  width: 120%;
+  width: 100%;
   margin: 10px;
-}
-
-.cartBodyFloat {
-  margin: 0% 10%;
-  position: fixed;
-  border: red 2px solid;
-  background-color: #221f1f;
-  bottom: 0;
-  float: left;
-  width: 80%;
 }

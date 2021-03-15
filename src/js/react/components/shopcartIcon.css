@@ -1,0 +1,18 @@
+.shopcartIcon {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+.shopcartIcon .shopItemAmount {
+  display: inline-block;
+  position: absolute;
+  top: -0.5rem;
+  left: 0.2rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
+  font-size: 0.8rem;
+  font-family: Arial, sans-serif;
+  color: #071a22;
+  width: 1rem;
+  z-index: 2;
+}

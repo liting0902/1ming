@@ -52,8 +52,7 @@ class ShopCart extends Component {
                 </div>
             </div>
         });
-        return <React.Fragment>
-            <div className="cartBody d-lg-flex justify-content-around d-none " >
+        return <React.Fragment>           
 
                 <div className="d-flex flex-column">
                     <h4 className="">購物車 </h4>
@@ -64,9 +63,6 @@ class ShopCart extends Component {
                         <div><button onClick={() => this.props.orderCheckOut()}> 送出訂單</button></div>
                     </div>
                 </div>
-
-            </div>
-
 
         </React.Fragment>
     }

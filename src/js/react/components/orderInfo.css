@@ -37,3 +37,7 @@
 .orderInfoMain .react-bootstrap-table .orderDetailExpanded {
   color: white;
 }
+.orderInfoMain .btnGetAllOrder {
+  display: flex;
+  justify-content: center;
+}

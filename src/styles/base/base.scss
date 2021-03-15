@@ -63,7 +63,7 @@ img{
     color:$colorGold;
     border: $colorGold 2px solid;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 0.5rem;
     border-radius: 20px;
     display: inline-block;
     padding:5px;
@@ -90,4 +90,8 @@ img{
 }
 .pointer {
     cursor: pointer;
+}
+a{
+    text-decoration: none;
+    
 }

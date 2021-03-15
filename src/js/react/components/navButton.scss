@@ -1,19 +1,18 @@
-.productHeader{
-    border:rgb(98, 223, 196) 2px solid;
-    // padding: 2rem;
-    display: flex;
-    justify-content: space-around;
-}
-.navBtn{
+a.navBtn {
     display: inline-block;
-    font-size: 1.5rem;
-    border-bottom: rgb(245, 245, 245) 2px solid;
-    a{
-        color: rgba(255, 255, 255, 0.678);
-        text-decoration: none;
-        :hover{
-            color:white;
-        }
+    font-size: 1.6rem;
+    height: 3.2rem;
+    padding:0.4rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.87) ;
+    border-radius: 2rem;
+    // border: rgba(22, 22, 22, 0.712) 3px solid;
+    background-color:rgba(0, 0, 0, 0.644);
+    &:hover {
+        background-color: lighten($color: #000000, $amount: 20%);
+        color:rgb(253, 253, 253);
+        // border: black 2px solid;
     }
-    
+
+
 }

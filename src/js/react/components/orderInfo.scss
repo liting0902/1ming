@@ -4,8 +4,8 @@
     width:90vw;
     height:100vh;
     color:white;
+
     .react-bootstrap-table{
-       
         .table-bordered{
             color: white;
             .expand-cell-header{
@@ -41,5 +41,8 @@
         }
 
     }
-    
+    .btnGetAllOrder{
+        display: flex;
+        justify-content: center;
+    }
 }
