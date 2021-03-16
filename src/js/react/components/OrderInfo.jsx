@@ -37,7 +37,7 @@ class OrderInfo extends Component {
             renderer: row => {
                 console.log(row)
                 let orderDetail = row.orderItem.map((element, i) => {
-                    return <h5 key={i} className={'orderDetailExpanded'}>{element.name} -- 數量:{element.quantity} -- 單價:{element.price}</h5>
+                    return <h5 key={i} className={'orderDetailExpanded'}>{element.name} -- 數量 : {element.quantity} -- 單價 : {element.price}</h5>
                 })
                 return <div>
                     {orderDetail}
@@ -75,7 +75,7 @@ class OrderInfo extends Component {
 
 
         return <div className="orderInfoMain">
-            <button onClick={() => { this.showOrderInfo() }}><h1>所有訂單</h1></button>
+            <button className="btnGetAllOrder" onClick={() => { this.showOrderInfo() }}><span>所有訂單</span></button>
             {bootstrapTable}
 
         </div>

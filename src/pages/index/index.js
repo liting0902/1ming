@@ -26,6 +26,12 @@ firebase.initializeApp(firebaseConfig);
 firebase.auth().useDeviceLanguage();
 window.firebase = firebase;
 
+let proxyPageSwitch ={
+    // orderPage.classList.add("d-none")
+    //     orderSummary.classList.add("d-none")
+    //     appendFullPage.hidden=true
+}
+
 let aUserLogin = document.querySelector('#aUserLogin');
 let liUserDropdown = document.querySelector('#liUserDropdown');
 let spanDisplayEmail = document.querySelector('#spanDisplayEmail');
@@ -34,12 +40,11 @@ let aMyProfile = document.querySelector('#aMyProfile');
 let aLogout = document.querySelector('#aLogout');
 let aOrderPage = document.querySelector('#aOrderPage');
 let pageStatic = document.querySelector('#pageStatic')
-let pageReact = document.querySelector('#pageReact');
+let pageReact = document.querySelector('#pageReact');  
 let orderPage = document.querySelector('#orderPage');
 let orderSummary = document.querySelector('#orderSummary');
 
 let [...scrollElement] = document.querySelectorAll('a[stactic-page]')
-
 scrollElement.map((e) => {
     e.addEventListener('click', () => {
         console.log('news ----------------------------')
@@ -88,7 +93,6 @@ let appendModalLogin = () => {
             let loginTemplate = new loginModal.ctor(loginModal.templateContent);
             document.body.appendChild(loginTemplate);
             console.log('append ModalLogin')
-
         })
 }
 

@@ -1,21 +1,28 @@
 .orderInfoMain {
+  position: relative;
+  top: 4rem;
   margin: 3%;
-  border: #c4de87 2px solid;
   width: 90vw;
   height: 100vh;
   color: white;
+}
+.orderInfoMain .react-bootstrap-table {
+  margin: 0.5rem;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered {
   color: white;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered .expand-cell-header {
-  width: 2rem;
-  color: #00d9ff;
+  width: 3rem;
+  color: #e05454;
   font-weight: 400;
 }
-.orderInfoMain .react-bootstrap-table .table-bordered .expand-cell-header th[tabindex="0"] {
-  font-weight: 700;
-  font-size: 2rem;
+.orderInfoMain .react-bootstrap-table .table-bordered th {
+  font-weight: border;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.orderInfoMain .react-bootstrap-table .table-bordered tr {
   text-align: center;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered .react-bootstrap-table-sort-order {
@@ -23,7 +30,7 @@
 }
 .orderInfoMain .react-bootstrap-table .table-bordered .expand-cell {
   width: 2rem;
-  color: #65e765;
+  color: #c965e7;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered .expandedHeaderColor {
   color: #fd83c4;
@@ -36,8 +43,21 @@
 }
 .orderInfoMain .react-bootstrap-table .orderDetailExpanded {
   color: white;
+  text-align: right;
+}
+.orderInfoMain .react-bootstrap-table .orderDetailExpanded:nth-child(2n-1) {
+  color: #ffd7de;
 }
 .orderInfoMain .btnGetAllOrder {
-  display: flex;
+  display: inline-flex;
   justify-content: center;
+  background-color: #a7a7a7;
+  border-radius: 5rem;
+  padding: 0.4rem;
+}
+.orderInfoMain .btnGetAllOrder button {
+  font-size: 2rem;
+}
+.orderInfoMain .btnGetAllOrder button:hover {
+  background-color: #cccccc;
 }

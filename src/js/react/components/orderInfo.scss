@@ -1,30 +1,36 @@
 .orderInfoMain{
+    position: relative;
+    top:4rem;
     margin: 3% ;
-    border: rgb(196, 222, 135) 2px solid;
+    // border: rgb(149, 149, 149) 2px solid;
     width:90vw;
     height:100vh;
-    color:white;
+    color:rgb(255, 255, 255); 
 
     .react-bootstrap-table{
+        margin: 0.5rem;
         .table-bordered{
             color: white;
             .expand-cell-header{
-                width:2rem;
-                color:rgb(0, 217, 255);
-                font-weight: 400;
-                th[tabindex='0']{
-                    font-weight: 700;
-                    font-size: 2rem;
-                    text-align: center;;
-                }
                 
+                width:3rem;
+                color:rgb(224, 84, 84);
+                font-weight: 400;                
+            }
+            th{
+                font-weight: border;
+                font-size: 1.2rem;
+                text-align: center;
+            }
+            tr{
+                text-align: center;
             }
             .react-bootstrap-table-sort-order{
                 color:white
             }
             .expand-cell{
                 width:2rem;
-                color:rgb(101, 231, 101);
+                color:rgb(201, 101, 231);
             }
             .expandedHeaderColor{color:rgb(253, 131, 196)}
             .expandedColor{
@@ -38,11 +44,24 @@
         }
         .orderDetailExpanded{
             color:white;
+            text-align: right;
+            &:nth-child(2n-1) {
+                color: rgb(255, 215, 222);
+            }
         }
 
     }
     .btnGetAllOrder{
-        display: flex;
+        display: inline-flex;
         justify-content: center;
+        background-color: rgba(167, 167, 167); 
+        border-radius: 5rem;
+        padding:0.4rem;
+        button{
+            font-size: 2rem;
+            &:hover{
+                background-color: rgb(204, 204, 204); 
+            }
+        }
     }
 }

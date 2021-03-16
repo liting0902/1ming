@@ -47,9 +47,9 @@ class ShopCart extends Component {
                     
                     
                 </div>
-                <div className="cartBodyFloat d-lg-none d-flex align-items-center ">
+                {/* <div className="cartBodyFloat d-lg-none d-flex align-items-center ">
                     <p>{item.name}</p>
-                </div>
+                </div> */}
             </div>
         });
         return <React.Fragment>           
