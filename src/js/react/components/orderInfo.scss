@@ -1,20 +1,25 @@
+
 .orderInfoMain{
     position: relative;
     top:4rem;
-    margin: 3% ;
+    margin: auto ;
+    padding:1rem;
     // border: rgb(149, 149, 149) 2px solid;
     width:90vw;
-    height:100vh;
+    // height:100vh;
     color:rgb(255, 255, 255); 
+    background-color: #35190355;
+    border-radius: 1rem;;
 
     .react-bootstrap-table{
-        margin: 0.5rem;
+        margin: auto;
         .table-bordered{
-            color: white;
+            color: rgba(255, 255, 255, 0.781);
+            border-color: hotpink;
+            
             .expand-cell-header{
-                
                 width:3rem;
-                color:rgb(224, 84, 84);
+                color:#9E4700;
                 font-weight: 400;                
             }
             th{
@@ -30,38 +35,59 @@
             }
             .expand-cell{
                 width:2rem;
-                color:rgb(201, 101, 231);
+                color:#702218;
             }
-            .expandedHeaderColor{color:rgb(253, 131, 196)}
+            .expandedHeaderColor{color:#5D2B06}
             .expandedColor{
-                color:deeppink;
+                color:#864251;
                 
             }
-            .expand-cell td{
-                background-color: yellow;
+            .row-expansion-style{
+                padding:1rem;
             }
 
+        }
+        .tablehead{
+            border-bottom: grey 2px solid;
+            font-weight: bolder;
         }
         .orderDetailExpanded{
             color:white;
             text-align: right;
             &:nth-child(2n-1) {
-                color: rgb(255, 215, 222);
+                background: rgba(0, 0, 0, 0.856);
+            }
+            td{
+                background-color: rgba(255, 255, 255, 0.137);
+                width:50rem;
+                border: 0;
+                vertical-align: middle;
+            }
+            .thumbnailUrl{
+                height: 4rem;
+                border-radius: 10px;
             }
         }
 
     }
+    .divOrderBtn{
+        padding:1rem;
+        width:100%;
+    }
     .btnGetAllOrder{
-        display: inline-flex;
+        display: flex;
         justify-content: center;
-        background-color: rgba(167, 167, 167); 
+        vertical-align: middle;
+        background-color: #815954; 
+        font-weight: bolder;
         border-radius: 5rem;
+        margin: auto;
         padding:0.4rem;
-        button{
-            font-size: 2rem;
             &:hover{
-                background-color: rgb(204, 204, 204); 
+                background-color: #A7904C; 
             }
+        &:focus{
+            outline:none;
         }
     }
 }

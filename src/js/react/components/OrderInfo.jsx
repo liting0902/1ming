@@ -37,11 +37,24 @@ class OrderInfo extends Component {
             renderer: row => {
                 console.log(row)
                 let orderDetail = row.orderItem.map((element, i) => {
-                    return <h5 key={i} className={'orderDetailExpanded'}>{element.name} -- 數量 : {element.quantity} -- 單價 : {element.price}</h5>
+                    let itemSum = element.price * element.quantity
+                    return <tr key={i} className={'orderDetailExpanded'}>
+                            <td ><img className={'thumbnailUrl'} src={element.thumbnailUrl} ></img></td>
+                            <td>{element.name}</td>
+                            <td>{element.quantity}份</td>
+                            <td>${itemSum}</td>
+                        </tr>
                 })
-                return <div>
+                return <table >
+                    <tr className={'orderDetailExpanded tablehead'}>
+                        <td >品項</td>
+                        <td >名稱</td>
+                        <td >數量</td>
+                        <td >單項總價</td>
+                    </tr>
+                        
                     {orderDetail}
-                </div>
+                </table>
             },
             showExpandColumn: true,
             expandHeaderColumnRenderer: ({ isAnyExpands }) => {
@@ -75,7 +88,10 @@ class OrderInfo extends Component {
 
 
         return <div className="orderInfoMain">
-            <button className="btnGetAllOrder" onClick={() => { this.showOrderInfo() }}><span>所有訂單</span></button>
+            <div className={'divOrderBtn'}>
+            <button className="btnGetAllOrder" onClick={() => { this.showOrderInfo() }}><span>查詢所有訂單</span></button>
+            </div>
+            
             {bootstrapTable}
 
         </div>

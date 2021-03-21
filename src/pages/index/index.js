@@ -26,11 +26,14 @@ firebase.initializeApp(firebaseConfig);
 firebase.auth().useDeviceLanguage();
 window.firebase = firebase;
 
-let proxyPageSwitch ={
+// let proxyPageSwitch ={
     // orderPage.classList.add("d-none")
     //     orderSummary.classList.add("d-none")
     //     appendFullPage.hidden=true
-}
+    // aUserLogin.classList.add('d-none');
+    //         liUserDropdown.classList.remove('d-none')
+    //         spanDisplayEmail.innerHTML = ` ${nameDisplay} 登入中`;
+// }
 
 let aUserLogin = document.querySelector('#aUserLogin');
 let liUserDropdown = document.querySelector('#liUserDropdown');
@@ -127,7 +130,7 @@ let setAuth_getRedirectResult = () => {
 aMyProfile.addEventListener('click', () => {
     $("#modalProfile").modal('show')
 });
-let uid;
+let uid = null;
 let onAuthStateChanged = () => {
     firebase.auth().onAuthStateChanged((user) => {
         let nameDisplay;

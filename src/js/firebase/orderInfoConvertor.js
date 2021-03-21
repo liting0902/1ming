@@ -20,7 +20,7 @@ export var orderInfoConverter = {
             date: orderInfo.date,
             summary: orderInfo.summary,
             orderItem: orderInfo.orderItem,
-            orderID:orderInfo.orderID
+            orderID:orderInfo.orderID,
         };
     },
     fromFirestore: function (snapshot, options) {

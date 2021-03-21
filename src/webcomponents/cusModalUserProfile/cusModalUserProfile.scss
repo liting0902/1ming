@@ -13,11 +13,12 @@ $bg4:#17A080;
 
 .boxUserProfile{
     .modal-dialog{
-        width: 95%;
+        
         // border: blue 2px solid;
         background-color:$bg2; 
     }
     .modal-content{
+        width:90%;
         background-color:$bg2; 
         height:42rem;
         .emailColor{

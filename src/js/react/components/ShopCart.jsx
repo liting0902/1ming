@@ -34,19 +34,19 @@ class ShopCart extends Component {
         let total = this.totalPrice(this.props.addShopCart)
 
         let shopCartItem = this.props.addShopCart.map((item, i) => {
-            // let handleChange = 
-            return <div key={i} className="shopCartItem">                
-                <div className="p-2">
-                    <span className="m-1 py-3">{item.name} - ${item.price}</span> 
-                    <div className="float-right">
-                        <button className="m-1 px-2 btn" onClick={() => this.incrementQty('+',`${item.name}`)}> <i className="fas fa-plus"></i> </button>
-                        <span className="m-1 px-2">{item.quantity}</span>
-                        <button className="m-1 px-2 btn" onClick={() => this.decrementQty('-',`${item.name}`)}> <i className="fas fa-minus"></i> </button>
-                        <button className="m-1 px-2 btn " onClick={() => this.props.deleteItem(`${item.name}`)}> <i className="fas fa-trash-alt"></i></button>
+            let itemPrice = item.quantity*item.price
+            return <div key={i} className="shopCartItem">         
+                    <div className="d-flex justify-content-between">
+                        <div >{item.name}  ${itemPrice}</div> 
+                        <div className={'d-flex '}>
+                        <button className=" btn" onClick={() => this.incrementQty('+',`${item.name}`)}> <i className="fas fa-plus"></i> </button>
+                        <div className="py-3">{item.quantity}</div>
+                        <button className=" btn" onClick={() => this.decrementQty('-',`${item.name}`)}> <i className="fas fa-minus"></i> </button>
+                        <button className=" btn " onClick={() => this.props.deleteItem(`${item.name}`)}> <i className="fas fa-trash-alt"></i></button>
+                        </div>
+                        
                     </div>
-                    
-                    
-                </div>
+               
                 {/* <div className="cartBodyFloat d-lg-none d-flex align-items-center ">
                     <p>{item.name}</p>
                 </div> */}
@@ -58,9 +58,9 @@ class ShopCart extends Component {
                     <h4 className="">購物車 </h4>
                     {shopCartItem}
                     
-                    <div className="d-flex justify-content-around">
-                        <div><em>總金額 : $ {total} </em></div>
-                        <div><button onClick={() => this.props.orderCheckOut()}> 送出訂單</button></div>
+                    <div className="d-flex justify-content-between m-2">
+                        <div className=" px-2"><em>總金額 : $ {total} </em></div>
+                        <div className=" px-2"><button className={'btn btnCheckOut'} onClick={() => this.props.orderCheckOut()}> 送出訂單</button></div>
                     </div>
                 </div>
 

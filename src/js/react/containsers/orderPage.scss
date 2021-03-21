@@ -13,7 +13,7 @@
         height:3rem;
         z-index: 2;
         padding:0.6rem;
-        border-bottom: 0.6rem rgba(6, 119, 43, 0.085) solid;
+        border-bottom: 0.6rem rgba(255, 255, 0, 0.322) solid;
         // background-color: rgba(255, 255, 255, 0.085);
         // border: blue 2px solid;
     }
@@ -26,11 +26,11 @@
         // border: 1px rgb(225, 0, 255) solid;
         width: 70vw;
         z-index: 1;
-        background-color: rgba(255, 255, 255, 0.075);
+        background-color: #35190355;
     }
     .cartBody {
         right:5px;
-        top:15%;
+        top:8rem;
         right:1rem;
         position:fixed;
         // float:right;
@@ -38,8 +38,9 @@
         width: 25%;
         max-height:80%;
         border: rgba(184, 184, 184, 0.699) 2px solid;
-        border-radius: 5px;
-        overflow-y:scroll;
+        background-color: #2c252370;
+        overflow-y:scroll;    
+        padding-left: -2rem; 
         
     }
     

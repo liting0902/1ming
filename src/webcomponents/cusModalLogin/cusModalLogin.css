@@ -4,7 +4,7 @@
   padding: 0.4rem;
 }
 .inputField1 span {
-  font-size: 1rem;
+  font-size: 10px;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.418);
   vertical-align: middle;
@@ -17,7 +17,7 @@
   -o-transform: rotate(160deg);
 }
 .inputField1 input {
-  font-size: 1rem;
+  font-size: 10px;
   color: white;
   border: none;
   padding: 10px;
@@ -122,7 +122,7 @@ img {
   color: #beac74;
   border: #beac74 2px solid;
   font-weight: bold;
-  font-size: 0.5rem;
+  font-size: 14px;
   border-radius: 20px;
   display: inline-block;
   padding: 5px;
@@ -141,7 +141,7 @@ img {
 
 .btnClose {
   color: white;
-  font-size: 1.5rem;
+  font-size: 20px;
 }
 .btnClose:hover {
   color: #fafa97;
@@ -262,7 +262,7 @@ a {
   background-color: #062645;
   width: 90%;
   font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
+  font-size: 12px;
   letter-spacing: 1px;
   color: #FFF;
   padding: 5px 20px;
@@ -286,7 +286,7 @@ a {
   background-color: #7a0042;
   width: 90%;
   font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
+  font-size: 12px;
   letter-spacing: 1px;
   color: #FFF;
   padding: 5px 20px;
@@ -310,7 +310,7 @@ a {
   background-color: rgba(73, 30, 30, 0.685);
   width: 90%;
   font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
+  font-size: 12px;
   letter-spacing: 1px;
   color: #FFF;
   padding: 5px 20px;
@@ -334,7 +334,7 @@ a {
   background-color: rgba(73, 30, 30, 0.685);
   width: 90%;
   font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
+  font-size: 12px;
   letter-spacing: 1px;
   color: #FFF;
   padding: 5px 20px;

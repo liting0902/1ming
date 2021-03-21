@@ -1,20 +1,23 @@
 .orderInfoMain {
   position: relative;
   top: 4rem;
-  margin: 3%;
+  margin: auto;
+  padding: 1rem;
   width: 90vw;
-  height: 100vh;
   color: white;
+  background-color: #35190355;
+  border-radius: 1rem;
 }
 .orderInfoMain .react-bootstrap-table {
-  margin: 0.5rem;
+  margin: auto;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered {
-  color: white;
+  color: rgba(255, 255, 255, 0.781);
+  border-color: hotpink;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered .expand-cell-header {
   width: 3rem;
-  color: #e05454;
+  color: #9E4700;
   font-weight: 400;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered th {
@@ -30,34 +33,55 @@
 }
 .orderInfoMain .react-bootstrap-table .table-bordered .expand-cell {
   width: 2rem;
-  color: #c965e7;
+  color: #702218;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered .expandedHeaderColor {
-  color: #fd83c4;
+  color: #5D2B06;
 }
 .orderInfoMain .react-bootstrap-table .table-bordered .expandedColor {
-  color: deeppink;
+  color: #864251;
 }
-.orderInfoMain .react-bootstrap-table .table-bordered .expand-cell td {
-  background-color: yellow;
+.orderInfoMain .react-bootstrap-table .table-bordered .row-expansion-style {
+  padding: 1rem;
+}
+.orderInfoMain .react-bootstrap-table .tablehead {
+  border-bottom: grey 2px solid;
+  font-weight: bolder;
 }
 .orderInfoMain .react-bootstrap-table .orderDetailExpanded {
   color: white;
   text-align: right;
 }
 .orderInfoMain .react-bootstrap-table .orderDetailExpanded:nth-child(2n-1) {
-  color: #ffd7de;
+  background: rgba(0, 0, 0, 0.856);
+}
+.orderInfoMain .react-bootstrap-table .orderDetailExpanded td {
+  background-color: rgba(255, 255, 255, 0.137);
+  width: 50rem;
+  border: 0;
+  vertical-align: middle;
+}
+.orderInfoMain .react-bootstrap-table .orderDetailExpanded .thumbnailUrl {
+  height: 4rem;
+  border-radius: 10px;
+}
+.orderInfoMain .divOrderBtn {
+  padding: 1rem;
+  width: 100%;
 }
 .orderInfoMain .btnGetAllOrder {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
-  background-color: #a7a7a7;
+  vertical-align: middle;
+  background-color: #815954;
+  font-weight: bolder;
   border-radius: 5rem;
+  margin: auto;
   padding: 0.4rem;
 }
-.orderInfoMain .btnGetAllOrder button {
-  font-size: 2rem;
+.orderInfoMain .btnGetAllOrder:hover {
+  background-color: #A7904C;
 }
-.orderInfoMain .btnGetAllOrder button:hover {
-  background-color: #cccccc;
+.orderInfoMain .btnGetAllOrder:focus {
+  outline: none;
 }

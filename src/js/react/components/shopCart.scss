@@ -10,12 +10,18 @@
 //     border-radius: 5px;
 //     overflow-y:scroll;
 .shopCartItem {
-    position: relative;
-    // display: inline-flex;
-    border: cadetblue 1px solid;
-    padding: 0.3rem;
-    width: 100%;
-    margin: 10px;
+    // position: relative;
+    border-bottom: #815954 1px solid;
+    width: 130%;
+    margin-left: -3rem;
+    color:#E4DEC9;
+    font-size: 0.8rem;
+    .fas{
+        color:#CDC4A3;
+    }
+}
+.btnCheckOut{
+    background-color: #A7904C;
 }
 
 // }

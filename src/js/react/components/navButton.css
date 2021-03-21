@@ -9,6 +9,8 @@ a.navBtn {
   background-color: rgba(0, 0, 0, 0.644);
 }
 a.navBtn:hover {
-  background-color: #333333;
-  color: #fdfdfd;
+  background-color: rgba(19, 13, 13, 0.863);
+  border: #4f3131 3px solid;
+  padding: 0.3rem;
+  color: #ffaf80;
 }

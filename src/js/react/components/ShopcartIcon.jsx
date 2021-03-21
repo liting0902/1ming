@@ -7,24 +7,17 @@ class ShopcartIcon extends Component{
         super(props)
     }
     getShopItemAmount = (_array) => {
-    console.log("LOG: ~ file: ShopcartIcon.jsx ~ line 10 ~ ShopcartIcon ~ _array", _array)
         let sumAmount = 0 ;
-
         let amountReducer = (accumulator, currentValue) => accumulator+ currentValue;
         if (_array.length>0){
             let arrAmount = _array.map((element) => element.quantity)
-        console.log("LOG: ~ file: ShopcartIcon.jsx ~ line 12 ~ ShopcartIcon ~ arrAmount", arrAmount)
         sumAmount = arrAmount.reduce(amountReducer);
         }
-        
-        console.log("LOG: ~ file: ShopcartIcon.jsx ~ line 15 ~ ShopcartIcon ~ getShopItemAmount ~ sumAmount", sumAmount)
         return sumAmount
     }
     render(){
-        console.log(this.props.addShopCart)
         return <React.Fragment>
             <i className="fas fa-shopping-cart fa-lg shopcartIcon"><span className="shopItemAmount">{this.getShopItemAmount(this.props.addShopCart)}</span></i>
-            
         </React.Fragment>
     }
 }

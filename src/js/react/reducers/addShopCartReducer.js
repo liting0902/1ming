@@ -1,5 +1,6 @@
 
-import { updateOrder } from '../../firebase/updateOrder.js';
+import Swal from 'sweetalert2';
+import { updateOrderToDB } from '../../firebase/updateOrderToDB.js';
 
 export default (state = [], action) => {
 
@@ -30,24 +31,57 @@ export default (state = [], action) => {
             (_state[index].quantity > 1) ? (_state[index].quantity--) : (_state.splice(index, 1))
         }
         return _state
-
     }
     if (action.type === "DELETE_ITEM") {
-        console.log("delete an itme in shopcart reducer")
         let _state = [...state].filter((element) => element.name !== action.payload.nameToBeDeleted);
-        console.log("LOG: Item in shopcart:", _state)
         return _state
 
     }
     if (action.type === "ORDER_CHECK_OUT") {
-        console.log(uid)
         let reducer = (accumulator, currentValue) => accumulator + currentValue;
         let summary = state.map((item) => item.price * item.quantity).reduce(reducer)
-        let orderItemList = [...state]
-        if(orderItemList)
-        updateOrder(uid, summary ,orderItemList )    
-
-
-    }
+        let orderItemList = []
+        if(typeof(uid)=='undefined'){
+            Swal.fire({
+                title:'請先登入',
+            icon:'warning'
+            })
+        }else if(state.length>0 && typeof(uid) !== 'undefined'){
+            orderItemList = [...state]
+            console.log("LOG: ~ file: addShopCartReducer.js ~ line 49 ~ orderItemList", orderItemList)
+            let displayConfirm = orderItemList.map((element) => {
+                let itemPrice = element.quantity*element.price
+                return `<span>${element.name}x${element.quantity} : ${itemPrice}</span>`
+            });
+            Swal.fire({
+                title:`請確認訂單內容 總金額$${summary}`,
+                html:`${displayConfirm}`,
+                icon:'info',
+                showCancelButton: true,
+                confirmButtonColor: '#9E4700',
+                cancelButtonColor: '#4C3A2C',
+                confirmButtonText: '確認並成立訂單',
+                cancelButtonText: '重返並變更',
+            }).then(async(result) => {
+                if(result.isConfirmed){                
+                    await updateOrderToDB(uid, summary ,orderItemList);                    
+                    let resetState = [];
+                    return resetState;
+                }
+            }).then((resetState) => {
+                state=resetState;
+                console.log("LOG: ~ file: addShopCartReducer.js ~ line 79 ~ orderItemList", state)
+            })
+            
+        }else {
+            Swal.fire({
+                title:'購物車內無商品',
+                icon:'warning',
+                showCloseButton: true,
+            })
+            }
+            console.log("//////////", state)
+            return state
+        }
     return state
 }

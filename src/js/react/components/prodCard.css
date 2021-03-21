@@ -15,7 +15,7 @@ body {
 }
 .prodCard .groupProd {
   margin: 5px;
-  background-color: rgba(68, 48, 48, 0.185);
+  background-color: #1a1515;
   display: inline-block;
   border: rgba(255, 255, 255, 0.281) 3px solid;
   border-radius: 5px;
@@ -25,19 +25,36 @@ body {
   text-align: center;
   padding: 0.4rem;
 }
+.prodCard .groupProd:hover {
+  background-color: #332d2c;
+}
+.prodCard .groupProd:hover .thumbnail {
+  transform: scale(1.1);
+  transition: all 1s ease-in;
+}
+.prodCard .groupProd:hover .fa-cart-arrow-down {
+  transform: translateY(20%);
+  transition: all 1s ease-in;
+}
+.prodCard .groupProd .fa-cart-arrow-down {
+  transform: translateY(-20%);
+  transition: all 1s ease-in-out;
+}
 .prodCard .groupProd span {
   padding: 0.5rem;
 }
+.prodCard .groupProd .btn {
+  background-color: #A7904C;
+}
 .prodCard .groupProd .thumbnail {
-  width: 100%;
+  width: 90%;
   height: 55%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: auto;
   border-radius: 5px;
 }
 .prodCard .groupProd .thumbnail img {
   border-radius: 5px;
-  display: inline-flex;
-  justify-content: center;
 }

@@ -9,8 +9,10 @@ a.navBtn {
     // border: rgba(22, 22, 22, 0.712) 3px solid;
     background-color:rgba(0, 0, 0, 0.644);
     &:hover {
-        background-color: lighten($color: #000000, $amount: 20%);
-        color:rgb(253, 253, 253);
+        background-color: rgba(19, 13, 13, 0.863);
+        border:lighten($color: rgb(32, 20, 20), $amount: 15%) 3px solid;
+        padding:0.3rem;
+        color:rgb(255, 175, 128);
         // border: black 2px solid;
     }
 
